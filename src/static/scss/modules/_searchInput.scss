@@ -1,0 +1,43 @@
+.t-site-search-close {
+  fill: #b6b6b6;
+  width: 1.5rem;
+  position: absolute;
+  margin: auto 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-right: 10px;
+  padding-left: 20px;
+  display: none;
+  box-sizing: content-box;
+}
+
+.show_close {
+  display: block !important;
+}
+
+.t838__blockinput {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.t-site-search-input {
+  display: table;
+  width: 100%;
+}
+
+.t-input {
+  padding-right: rem(54);
+  border-radius: 35px;
+}
+
+.is-show {
+  display: flex;
+}
+
+.is-hidden {
+  display: none;
+}

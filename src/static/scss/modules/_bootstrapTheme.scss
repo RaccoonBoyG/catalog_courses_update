@@ -1,0 +1,16 @@
+$theme-colors: (
+  "primary": $shades-secondary,
+  "primary-dark": $shades-mid-dark-second,
+  "dark": $navbar-color,
+  "custom-dark": $dark-color,
+  "custom-dark2": $dark-color2,
+  "neutral-regular": $neutral-regular,
+  "dark-texts": $dark-color-text,
+  "neutral-placeholder": $neutral-placeholder
+);
+
+$border-radius: 0;
+
+$navbar-padding-y: 0.2rem;
+$navbar-padding-x: 5rem;
+$navbar-brand-padding-y: 0;

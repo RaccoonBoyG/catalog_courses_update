@@ -1,0 +1,26 @@
+.title_catalog {
+  position: relative;
+  text-align: center;
+  // padding: 1rem;
+  // background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+  // text-transform: uppercase;
+  // font-family: 'Intro';
+  h1 {
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+.top-txt-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-txt-container-sub {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}

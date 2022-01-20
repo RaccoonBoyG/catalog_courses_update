@@ -1,0 +1,43 @@
+.back_to_top {
+  position: fixed;
+  bottom: rem(30);
+  right: rem(20);
+  z-index: 9999;
+  cursor: pointer;
+  display: none;
+}
+
+.btn-circle {
+  width: rem(50);
+  height: rem(50);
+  border-radius: 35px;
+}
+
+.btn-circle-search{
+  width: rem(40);
+  height: rem(40);
+  border-radius: 35px;
+}
+
+.btn-circle-search-svg{
+  transform: translate(-7.5px, -2px);
+}
+
+.back_to_top-show {
+  display: block;
+}
+
+// button load more
+// .loadmore {
+//   -webkit-transition: all 0.3s ease-in-out;
+//   -moz--transition: all 0.3s ease-in-out;
+//   transition: all 0.2s ease-in-out;
+// }
+// .loadmore:hover {
+//   -webkit-transition: all 0.3s ease-in-out;
+//   -moz--transition: all 0.3s ease-in-out;
+//   transition: all 0.2s ease-in-out;
+//   background-color: $shades-hight-dark;
+//   border-color: $shades-hight-dark;
+//   // box-shadow: 0px 0px 8px 2px $dark-color;
+// }

@@ -1,0 +1,49 @@
+// .page-footer {
+//   background-color: $border-base;
+//   background: url(http://itoo.urfu.ru/Content/images/bg.jpg) repeat center 0;
+//   position: relative;
+//   background-image:
+//   linear-gradient(
+//     to top ,
+//     $primary-color , $neutral-primary
+//   );
+//   box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.75);
+// }
+
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hr-footer {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  background-image: -moz-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  background-image: -ms-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  background-image: -o-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}

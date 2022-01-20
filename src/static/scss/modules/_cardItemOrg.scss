@@ -1,0 +1,39 @@
+.card-org {
+  border-radius: 0px;
+  border: none;
+  margin-bottom: 50px;
+  cursor: pointer;
+  z-index: 2;
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  color: $color_1;
+  &:hover {
+    transition: all 0.1s ease-in-out 0.1s;
+    -webkit-transition: all 0.1s ease-in-out;
+    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
+  }
+}
+.card-org-img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+.card-org-body {
+  background-color: $background_color_1;
+}
+a {
+  text-decoration: none;
+}
+// .org-or-programs {
+// 	min-height: 865px;
+// }
+
+.button-custom {
+  bottom: 0px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  min-height: rem(50);
+}
