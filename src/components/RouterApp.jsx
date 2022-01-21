@@ -34,7 +34,7 @@ class RouterApp extends Component {
               <Route path="/about" element={<AboutUs />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/tech" element={<Tech />} />
-              <Route path="/404" element={NotFound} />
+              <Route path="/404" element={<NotFound />} />
               <Route path="/orgs/:org" element={<OrganizationAbout />} />
               <Route path="/orgs" element={<Organization />} />
               {/* <Route path="/programs/:program" component={ProgramAbout} />

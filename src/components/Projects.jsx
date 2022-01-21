@@ -8,6 +8,7 @@ import ListCard from '../containers/ListCard';
 import scroll from './scroll';
 import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 import Spinner from '../containers/Spinner';
+import withRouter from '../utils/withRouter';
 
 class Projects extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Projects extends Component {
           slug={item.slug_project}
           logo={item.logo}
           image_background={item.image_background}
-          url={this.props.match.url}
+          url={this.props.location}
           handleClick={this.postIdAPI}
         />
       );
@@ -69,7 +70,7 @@ const mapDispatchToProps = {
   fetchAboutProject
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Projects);
+)(Projects));

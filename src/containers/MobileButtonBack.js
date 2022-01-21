@@ -6,7 +6,7 @@ const MobileButtonBack = props => {
   // console.log(props.history);
 
   return (
-    <button className="btn text-light mt-2" onClick={props.history.goBack}>
+    <button className="btn text-light mt-2" onClick={props.navigate(-1)}>
       <IconContext.Provider value={{ size: "2em" }}>
         <IoMdArrowBack />
       </IconContext.Provider>

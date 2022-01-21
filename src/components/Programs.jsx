@@ -8,6 +8,7 @@ import ListCard from '../containers/ListCard';
 import scroll from './scroll';
 import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 import Spinner from '../containers/Spinner';
+import withRouter from '../utils/withRouter';
 
 class Programs extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class Programs extends Component {
           image_background={item.image_background}
           edu_start_date={item.edu_start_date}
           edu_end_date={item.edu_end_date}
-          url={this.props.match.url}
+          url={this.props.location}
           handleClick={this.postIdAPI}
         />
       );
@@ -66,7 +67,7 @@ const mapDispatchToProps = {
   fetchAboutProgram
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Programs);
+)(Programs));

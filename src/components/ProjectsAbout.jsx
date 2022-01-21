@@ -39,7 +39,7 @@ class ProjectsAbout extends Component {
       return <Spinner />;
     }
    data.map(i => {
-    if (i.slug_project === this.props.match.url.replace('/projects/', '')){
+    if (i.slug_project === this.props.location.pathname.replace('/projects/', '')){
       if (i.hide_menu) {
         let menu = document.getElementsByClassName('navbar');
         menu[0].setAttribute("style", "display:none;")
@@ -53,7 +53,7 @@ class ProjectsAbout extends Component {
     return (
       <>
         {data.map(item => {
-          if (item.slug_project === this.props.match.url.replace('/projects/', '')) {
+          if (item.slug_project === this.props.location.pathname.replace('/projects/', '')) {
             return (
               <React.Fragment key={item.name + item.slug_project}>
                 <div className="d-flex flex-row backImgCourse margin-custom-catalog">
@@ -72,14 +72,14 @@ class ProjectsAbout extends Component {
                   <ArrayContent data_content={data} />
                   <div className="m-3 d-flex flex-wrap flex-row">
                     {data_programs.map(item => {
-                      return item.project_slug === this.props.match.url.replace('/projects/', '') ? (
+                      return item.project_slug === this.props.location.pathname.replace('/projects/', '') ? (
                         <ListCard
                           key={item.name + item.slug_program}
                           name={item.name}
                           slug={item.slug_program}
                           logo={item.logo}
                           image_background={item.image_background}
-                          url={this.props.match.url}
+                          url={this.props.location}
                           edu_start_date={item.edu_start_date}
                           edu_end_date={item.edu_end_date}
                           handleClick={this.postIdAPI}

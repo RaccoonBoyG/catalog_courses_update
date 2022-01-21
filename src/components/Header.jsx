@@ -65,13 +65,13 @@ class Header extends Component {
 
   _onButtonClickFilter() {
     var header = document.querySelector('.header');
-    header.classList.toggle('menu-open');
+    header.classList.toggle('menu-open', header)
     this.updateData({ showComponentFilter: true, showComponentMenu: false });
   }
 
   _onButtonClickMenuItem() {
-    var header = document.querySelector('.header');
-    header.classList.toggle('menu-open');
+    var header = $('.header');
+    $(header).toggleClass("menu-open", header)
     this.updateData({ showComponentMenu: false, showComponentFilter: false });
   }
 
@@ -87,7 +87,7 @@ class Header extends Component {
     var header = document.querySelector('.header');
     header.classList.toggle('menu-open');
     this.updateData({ showComponentFilter: false, showComponentMenu: false });
-    this.props.history.push('/');
+    this.props.navigate('/');
   }
 
   resetInput() {
@@ -248,10 +248,10 @@ class Header extends Component {
             </div>
             {this.props.location.pathname === `/orgs/${this.props.params.org}` ||
             this.props.location.pathname === `/${this.props.params.id}` ? (
-              <MobileButtonBack history={this.props.history} />
+              <MobileButtonBack navigate={this.props.navigate} />
             ) : null}
-            {this.state.showComponentMenu ? <MobileMenu isAuth={isAuth} onButtonClickMenuItem={this._onButtonClickMenuItem} /> : null}
-            {this.state.showComponentFilter && this.props.history.location.pathname === '/' ? (
+            {this.state.showComponentMenu ? <MobileMenu isAuth={isAuth} onButtonClickMenuItem={this._onButtonClickMenuItem}  /> : null}
+            {this.state.showComponentFilter && this.props.location.pathname === '/' ? (
               <MobileFilter
                 _handleTextChange={this._handleTextChange}
                 submitSearch={this.submitSearch}

@@ -7,7 +7,7 @@ const MobileFilter = ({
   term
 }) => {
   return (
-    <div className="mobile-menu menu-open">
+    <div className="mobile-menu ">
       <ul className="menu">
         <li className="menu-item">
           <p>

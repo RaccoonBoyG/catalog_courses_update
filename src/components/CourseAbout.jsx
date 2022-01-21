@@ -36,8 +36,10 @@ class CourseAbout extends Component {
   }
 
   async componentDidMount() {
-    let nav = useNavigate();
-    await this.props.fetchAbout(this.props.params.id, nav);
+    let test = async () => {
+      return await this.props.navigate("/404", {replace: true})
+    }
+    await this.props.fetchAbout(this.props.params.id, this.props.navigate);
     window.scrollTo(0, 0);
     scroll();
     await this.props.fetchUserState();

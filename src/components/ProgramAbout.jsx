@@ -33,7 +33,7 @@ class ProgramAbout extends Component {
   }
 
   render() {
-    const { data, loading, isAuth, history, data_enroll, loading_card_about, data_card } = this.props;
+    const { data, loading, isAuth, location, data_enroll, loading_card_about, data_card } = this.props;
     if (loading && loading_card_about) {
       return <Spinner />;
     }
@@ -47,7 +47,7 @@ class ProgramAbout extends Component {
           height={100}
           class={'top-txt-container-sub'}
           program_slug={this.props.params.program}
-          search={history.location.search}
+          search={location.search}
           isAuth={isAuth}
           data_enroll={data_enroll}
         />
