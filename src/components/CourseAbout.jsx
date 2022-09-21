@@ -104,7 +104,9 @@ class CourseAbout extends Component {
         return (
             <div className="mb-5">
               <Player
-                  // autoPlay
+                  autoPlay={false}
+                  playsInline
+                  preload={'metadata'}
                   poster={course_image_uri || promo_image}
                   src={course_video_uri}
               >
