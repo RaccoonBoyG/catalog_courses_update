@@ -73,6 +73,19 @@ class CourseAbout extends Component {
     //   this.props.fetchEnrollState(this.props.params.id);
     // }
     // var config = { ALLOWED_TAGS: ['iframe', 'p', 'div', 'br', 'b', 'section', 'h1', 'h2', 'h3', 'h4', 'h5', 'img', 'strong'] };
+    // if (document.querySelector('iframe') == null) 
+    // {
+    //   console.log("no iframes"); 
+    // }
+    // else {
+    //   Array.prototype.forEach.call(
+    //     document.querySelectorAll('iframe'),
+    //     function (iframe) {
+    //       // can't use .remove: https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+    //       iframe.parentElement.removeChild(iframe);
+    //     }
+    //   );
+    // }
     if (loading && loading_user && data.length === 0) {
       return <Spinner />;
     }
