@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchAbout } from '../store/course_about/action';
-import { fetchEnrollState, clearLoadingUser, fetchUserState } from '../store/user/action';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchAbout} from '../store/course_about/action';
+import {BigPlayButton, ControlBar, Player, PlayToggle} from 'video-react';
+import {clearLoadingUser, fetchEnrollState, fetchUserState} from '../store/user/action';
 import 'animate.css/animate.min.css';
 // import ButtonEnroll from "../containers/ButtonEnroll";
 // import ButtonReadMore from "../containers/ButtonReadMore";
@@ -12,10 +13,10 @@ import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 // import { IoMdArrowBack } from "react-icons/io";
 // import { IconContext } from "react-icons";
 import Spinner from '../containers/Spinner';
-import { MEDIA_LS_URL } from '../services/openurfu';
+import {MEDIA_LS_URL} from '../services/openurfu';
 import Cookies from 'js-cookie';
 import withRouter from '../utils/withRouter';
-import { useNavigate } from "react-router-dom";
+
 // let backImg = {
 // backgroundImage: "url('//openedu.urfu.ru/files/courses_catalog/bg-nav.jpeg')",
 // background: "url('http://itoo.urfu.ru/Content/images/bg.jpg') repeat center 0"
@@ -87,27 +88,59 @@ class CourseAbout extends Component {
     //   );
     // }
     if (loading && loading_user && data.length === 0) {
-      return <Spinner />;
+      return <Spinner/>;
     }
+
+    function PromoPlayer(props) {
+      const course_video_uri = props.course_video_uri;
+      const course_image_uri = MEDIA_LS_URL + props.course_image_uri;
+      const course_title = data.name;
+      const promo_image = data.promo_image;
+      if (!course_video_uri && !course_image_uri) {
+        return null;
+      }
+
+      if (course_video_uri && (course_image_uri || promo_image)) {
+        return (
+            <div className="mb-5">
+              <Player
+                  // autoPlay
+                  poster={course_image_uri || promo_image}
+                  src={course_video_uri}
+              >
+                <BigPlayButton position="center"/>
+                <ControlBar autoHide={false} disableDefaultControls={false}>
+                  <PlayToggle/>
+                </ControlBar>
+              </Player>
+            </div>
+        )
+      } else {
+        return (
+            <img src={course_image_uri} alt={course_title} className="img-fluid mb-5"/>
+        )
+      }
+    }
+
     return (
-      <React.Fragment>
-        <AboutRender
-          name={data.name}
-          invitation_only={data.invitation_only}
-          class={'top-txt-container-sub'}
-          height={100}
-          isAuth={isAuth}
-          course_enroll_user={course_enroll_user}
-          params={params}
-          search={navigate.search}
-          modes_data={modes_data}
-          changeEnroll={this.changeEnroll}
-        />
-        {/* <div style={{ ...backImg }}></div> */}
-        <div className="container pb-5 pt-3 mb-5 p-custom-2">
-          <div className=" animated fadeIn text-custom-dark mb-3 p-0" style={{ borderRadius: '0' }}>
-            <div className="d-flex flex-row justify-content-between">
-              {/* <div className="d-flex flex-row">
+        <React.Fragment>
+          <AboutRender
+              name={data.name}
+              invitation_only={data.invitation_only}
+              class={'top-txt-container-sub'}
+              height={100}
+              isAuth={isAuth}
+              course_enroll_user={course_enroll_user}
+              params={params}
+              search={navigate.search}
+              modes_data={modes_data}
+              changeEnroll={this.changeEnroll}
+          />
+          {/* <div style={{ ...backImg }}></div> */}
+          <div className="container pb-5 pt-3 mb-5 p-custom-2">
+            <div className=" animated fadeIn text-custom-dark mb-3 p-0" style={{borderRadius: '0'}}>
+              <div className="d-flex flex-row justify-content-between">
+                {/* <div className="d-flex flex-row">
                 <button
                   className="btn btn-primary m-3 buttonBackPC d-flex"
                   onClick={this.props.history.goBack}
@@ -117,16 +150,19 @@ class CourseAbout extends Component {
                   </IconContext.Provider>
                 </button>
               </div> */}
+              </div>
+              <div className="container p-5 bg-white shadow-sm">
+
+                <PromoPlayer course_video_uri={data.course_video_uri} course_image_uri={data.course_image_uri}/>
+
+                <div
+                    className="question-text"
+                    dangerouslySetInnerHTML={{
+                      __html: data.overview
+                    }}
+                />
+              </div>
             </div>
-            <div className="container p-5 bg-white shadow-sm">
-              <div
-                className="question-text"
-                dangerouslySetInnerHTML={{
-                  __html: data.overview
-                }}
-              />
-            </div>
-          </div>
         </div>
         <ButtonScrollToTop />
       </React.Fragment>

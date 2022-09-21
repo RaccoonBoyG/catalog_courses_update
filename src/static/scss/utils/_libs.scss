@@ -1,5 +1,20 @@
-@import "node_modules/normalize.css/normalize";
+@import "~normalize.css/normalize";
 
-@import "node_modules/animate.css/animate";
+@import "~animate.css/animate";
 
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+@import '~video-react/styles/scss/video-react';
+
+.video-react .video-react-big-play-button {
+  font-size: 6em;
+  line-height: 1.4em;
+  height: 1.5em;
+  width: 2em;
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 143, 210, 0.43);
+  border: none;
+  border-radius: 0.1em;
+  transition: all 0.4s;
+}
