@@ -105,9 +105,7 @@ html {
       max-height: 95px;
       max-width: 95px;
     }
-    .course-staff {
-      margin: 1rem;
-    }
+
     .teacher {
       height: rem(150);
       margin: rem(20);
@@ -264,9 +262,6 @@ html {
         font-size: 1.8rem;
       }
     }
-    .course-staff {
-      margin: 1rem;
-    }
     .teacher {
       height: 100%;
       margin: rem(20);
@@ -356,9 +351,7 @@ html {
         font-size: 1.8rem;
       }
     }
-    .course-staff {
-      margin: 1rem;
-    }
+
     .teacher {
       height: 100%;
       margin: rem(20);
@@ -447,9 +440,7 @@ html {
         font-size: 1.8rem;
       }
     }
-    .course-staff {
-      margin: 1rem;
-    }
+
     .teacher {
       height: 100%;
       margin: rem(20);
@@ -471,7 +462,7 @@ html {
 
   body {
     font-family: $mainFont;
-    font-family: $mainFontSize;
+    font-size: $mainFontSize;
     font-weight: $mainFontWeight;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
