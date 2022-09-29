@@ -119,7 +119,9 @@ class OpeneduService {
       short_description: data.short_description,
       id: data.id,
       overview: data.overview,
-      invitation_only: data.invitation_only
+      invitation_only: data.invitation_only,
+      course_video_uri: data.media.course_video.uri,
+      course_image_uri: data.media.course_image.uri
     };
   }
 
