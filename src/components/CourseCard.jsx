@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import React, {Component} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faClock} from '@fortawesome/free-regular-svg-icons';
+import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
 import 'animate.css/animate.min.css';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchAbout } from '../store/course_about/action';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {fetchAbout} from '../store/course_about/action';
+
 
 let backgroundImg = {
   backgroundPosition: 'top',
