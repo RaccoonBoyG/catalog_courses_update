@@ -186,6 +186,27 @@ html {
       max-height: 95px;
       max-width: 95px;
     }
+    .teacher {
+      // padding: rem(20);
+      height: 100%;
+      margin: rem(20);
+
+      h3 {
+        padding-top: rem(20);
+      }
+
+      .teacher-image {
+        max-height: rem(100);
+        // margin: rem(20);
+      }
+
+      img {
+        // padding: rem(20);
+        margin-right: 2rem;
+        max-height: rem(150);
+        max-width: rem(150);
+      }
+    }
   }
   @media only screen and (min-width: $phoneWidth) and (max-width: $tableWidth) {
     .bg_img {

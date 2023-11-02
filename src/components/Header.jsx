@@ -163,16 +163,21 @@ class Header extends Component {
                     Обучение НПР
                   </NavLink>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink to="/projects" className="nav-link">
                     Программы
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   {/* <a className="nav-link" href="#">О нас</a> */}
                   <NavLink to="/about" className="nav-link">
                     О нас
                   </NavLink>
+                </li>
+                <li className="nav-item">
+                  <a href={`${MEDIA_LS_URL}/helpdesk`} className="nav-link" id="href">
+                    Помощь
+                  </a>
                 </li>
                 {isAuth ? <MyCourses /> : null}
 

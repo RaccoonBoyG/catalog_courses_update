@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 import withRouter from '../utils/withRouter';
+import { MEDIA_LS_URL } from '../services/openurfu';
 
 class Footer extends Component {
   render() {
@@ -37,6 +38,11 @@ class Footer extends Component {
                   Технические требования
                 </NavLink>
               </p>
+              <p>
+                <a href={`${MEDIA_LS_URL}/helpdesk`}className="text-neutral-regular" id="href">
+                  Техническая поддержка
+                </a>
+              </p>
             </div>
             <hr className="w-200 clearfix d-md-none" />
             <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mt-2">
@@ -47,7 +53,7 @@ class Footer extends Component {
               </p>
               <p className="text-neutral-regular">
                 {/* <i className="fas fa-envelope mr-3"></i> +7 (992) 024-26-58 */}
-                openedu@urfu.ru
+                courses.openedu@urfu.ru
               </p>
               <p className="text-neutral-regular">
                 {/* <i className="fas fa-envelope mr-3"></i> +7 (992) 024-26-58 */}
