@@ -8,11 +8,11 @@ import { MEDIA_LS_URL } from '../services/openurfu';
 class Footer extends Component {
   render() {
     return (
-      <footer className="page-footer font-small mdb-color pt-1">
-        <div className="container text-center text-md-left">
+      <footer className="page-footer font-small mdb-color pt-1 pb-1">
+        <div className="container text-center text-md-left mb-2">
           <hr className="hr-footer " />
           <div className="row text-center text-md-left mt-5 mb-5">
-            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-2">
+            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-2 ">
               <h6 className="text-uppercase mb-4 font-weight-bold text-custom-dark">
                 <img
                   src="//openedu.urfu.ru/files/courses_catalog/UrFULogo1.svg"
@@ -25,8 +25,9 @@ class Footer extends Component {
                 Ural Federal University
               </h6> */}
               <p className="text-custom-dark ">
-                ФГАОУ ВО «УрФУ имени первого Президента России Б.Н.Ельцина» Институт
-                технологий открытого образования
+                ФГАОУ ВО «УрФУ имени первого Президента России Б.Н.Ельцина»
+                <br />
+                Центр новых образовательных технологий и аудиовизуальных средств обучения
               </p>
             </div>
             <hr className="w-200 clearfix d-md-none" />
@@ -56,32 +57,28 @@ class Footer extends Component {
             </div>
             <hr className="w-200 clearfix d-md-none" />
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-2">
-              <h6 className="text-uppercase mb-4 font-weight-bold text-custom-dark">
-                Контакты
-              </h6>
-              <p className="text-neutral-regular">
-                {/* <i className="fas fa-home mr-3"></i> */}
-                Екатеринбург, ул. Мира д.19, каб. И-200
-              </p>
-              <p className="text-neutral-regular">
-                {/* <i className="fas fa-envelope mr-3"></i> +7 (992) 024-26-58 */}
-                courses.openedu@urfu.ru
-              </p>
-              <p className="text-neutral-regular">
-                {/* <i className="fas fa-envelope mr-3"></i> +7 (992) 024-26-58 */}
-                {/* +7 (992) 024-26-58 */}
-              </p>
-            </div>
-            <hr className="w-200 clearfix d-md-none" />
-            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-2">
-              <h6 className="text-uppercase mb-4 font-weight-bold text-custom-dark">
-                Техническая поддержка студентов УрФУ
+              <h6 className="text-uppercase mb-2 font-weight-bold text-custom-dark">
+                Поддержка студентов УрФУ
               </h6>
               <p className="text-neutral-regular">
                 {/* <i className="fas fa-home mr-3"></i> */}
                 openedu@urfu.ru
               </p>
+              <h6 className="text-uppercase mt-4 mb-2 font-weight-bold text-custom-dark">
+                Контакты
+              </h6>
+              <p className="text-neutral-regular">
+                {/* <i className="fas fa-home mr-3"></i> */}
+                Екатеринбург, ул. Мира д.19, каб. И-200
+                <br />
+                courses.openedu@urfu.ru
+              </p>
+              <p className="text-neutral-regular">
+                {/* <i className="fas fa-envelope mr-3"></i> +7 (992) 024-26-58 */}
+              </p>
             </div>
+            <hr className="w-200 clearfix d-md-none" />
+            {/* <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-2"></div> */}
           </div>
           {/* <hr className="hr-footer" /> */}
           {/* <div className="d-flex align-items-center">
