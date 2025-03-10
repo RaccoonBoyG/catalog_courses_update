@@ -1,120 +1,135 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom'; // Link
-import withRouter from '../utils/withRouter';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom"; // Link
+import withRouter from "../utils/withRouter";
 
 // import logo from '../static/img/logo_full.png'
 // import Search from './Search';
-import { fetchUserState } from '../store/user/action';
-import { searchInput, resetSearch } from '../store/cards/action';
-import RenderProfileYes from '../containers/RenderProfileYes';
-import RenderProfileNo from '../containers/RenderProfileNo';
-import MyCourses from '../containers/MyCourses';
-import { MEDIA_LS_URL } from '../services/openurfu';
-import { IoIosSearch } from 'react-icons/io';
-import { IconContext } from 'react-icons';
-import $ from 'jquery';
-import MobileFilter from '../containers/MobileFilter';
-import MobileMenu from '../containers/MobileMenu';
-import MobileButtonBack from '../containers/MobileButtonBack';
+import { fetchUserState } from "../store/user/action";
+import { searchInput, resetSearch } from "../store/cards/action";
+import RenderProfileYes from "../containers/RenderProfileYes";
+import RenderProfileNo from "../containers/RenderProfileNo";
+import MyCourses from "../containers/MyCourses";
+import { MEDIA_LS_URL } from "../services/openurfu";
+import { IoIosSearch } from "react-icons/io";
+import { IconContext } from "react-icons";
+import $ from "jquery";
+import MobileFilter from "../containers/MobileFilter";
+import MobileMenu from "../containers/MobileMenu";
+import MobileButtonBack from "../containers/MobileButtonBack";
 
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showComponentMenu: false,
-      showComponentFilter: false,
-      term: '',
-    };
-    this._onButtonClickMenu = this._onButtonClickMenu.bind(this);
-    this._onButtonClickFilter = this._onButtonClickFilter.bind(this);
-    this._handleTextChange = this._handleTextChange.bind(this);
-    this.submitSearch = this.submitSearch.bind(this);
-    this.resetInput = this.resetInput.bind(this);
-    this._onButtonClickMenuItem = this._onButtonClickMenuItem.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            showComponentMenu: false,
+            showComponentFilter: false,
+            term: "",
+        };
+        this._onButtonClickMenu = this._onButtonClickMenu.bind(this);
+        this._onButtonClickFilter = this._onButtonClickFilter.bind(this);
+        this._handleTextChange = this._handleTextChange.bind(this);
+        this.submitSearch = this.submitSearch.bind(this);
+        this.resetInput = this.resetInput.bind(this);
+        this._onButtonClickMenuItem = this._onButtonClickMenuItem.bind(this);
+    }
 
-  componentDidMount() {
-    // this.props.fetchEnrollState();
-    // if(!this.props.loading_user && this.props.params.id !== undefined) {
-    //   this.props.fetchEnrollState(this.props.params.id);
-    //   console.log(this.props.params.id);
+    componentDidMount() {
+        // this.props.fetchEnrollState();
+        // if(!this.props.loading_user && this.props.params.id !== undefined) {
+        //   this.props.fetchEnrollState(this.props.params.id);
+        //   console.log(this.props.params.id);
 
-    // }
-    var header = document.querySelector('.header');
-    var icon = document.querySelector('.icon-container');
-    var icon_search = document.querySelector('.icon-container-search');
-    if (this.props.location.pathname === '/')
-      icon_search.onclick = function () {
-        header.classList.toggle('menu-open');
-      };
-    icon.onclick = function () {
-      header.classList.toggle('menu-open');
-    };
-  }
-  updateData(config) {
-    this.setState(config);
-  }
+        // }
+        var header = document.querySelector(".header");
+        var icon = document.querySelector(".icon-container");
+        var icon_search = document.querySelector(".icon-container-search");
+        if (this.props.location.pathname === "/")
+            icon_search.onclick = function () {
+                header.classList.toggle("menu-open");
+            };
+        icon.onclick = function () {
+            header.classList.toggle("menu-open");
+        };
+    }
+    updateData(config) {
+        this.setState(config);
+    }
 
-  _onButtonClickMenu() {
-    this.updateData({ showComponentMenu: true, showComponentFilter: false });
-  }
+    _onButtonClickMenu() {
+        this.updateData({ showComponentMenu: true, showComponentFilter: false });
+    }
 
-  _onButtonClickFilter() {
-    var header = document.querySelector('.header');
-    header.classList.toggle('menu-open', header)
-    this.updateData({ showComponentFilter: true, showComponentMenu: false });
-  }
+    _onButtonClickFilter() {
+        var header = document.querySelector(".header");
+        header.classList.toggle("menu-open", header);
+        this.updateData({ showComponentFilter: true, showComponentMenu: false });
+    }
 
-  _onButtonClickMenuItem() {
-    var header = $('.header');
-    $(header).toggleClass("menu-open", header)
-    this.updateData({ showComponentMenu: false, showComponentFilter: false });
-  }
+    _onButtonClickMenuItem() {
+        var header = $(".header");
+        $(header).toggleClass("menu-open", header);
+        this.updateData({ showComponentMenu: false, showComponentFilter: false });
+    }
 
-  _handleTextChange(e) {
-    this.updateData({
-      ...this.state,
-      term: e.target.value,
-    });
-  }
+    _handleTextChange(e) {
+        this.updateData({
+            ...this.state,
+            term: e.target.value,
+        });
+    }
 
-  submitSearch() {
-    this.props.searchInput(this.state.term);
-    var header = document.querySelector('.header');
-    header.classList.toggle('menu-open');
-    this.updateData({ showComponentFilter: false, showComponentMenu: false });
-    this.props.navigate('/');
-  }
+    submitSearch() {
+        this.props.searchInput(this.state.term);
+        var header = document.querySelector(".header");
+        header.classList.toggle("menu-open");
+        this.updateData({ showComponentFilter: false, showComponentMenu: false });
+        this.props.navigate("/");
+    }
 
-  resetInput() {
-    this.props.resetSearch();
-    $('.search-slt').val('');
-    this.updateData({
-      ...this.state,
-      term: '',
-    });
-  }
+    resetInput() {
+        this.props.resetSearch();
+        $(".search-slt").val("");
+        this.updateData({
+            ...this.state,
+            term: "",
+        });
+    }
 
-  render() {
-    const { isAuth } = this.props;
-    return (
-      <React.Fragment>
-        {/* <div className="bg_img" style={backgroundImg}></div> */}
-        {/* <img className="bg_img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""/> */}
-        <div className="container-fluid shadow-sm">
-          <nav className="navbar navbar-expand-lg navbar-light container pb-3 pl-0 pr-0">
-            <NavLink className="navbar-brand" to="/">
-              <img
-                src="https://openedu.urfu.ru/files/courses_catalog/urfu_logo.png"
-                width="110"
-                img-field="img"
-                alt=""
-              />
-              {/* <svg version="1.0" className="brand_img" xmlns="http://www.w3.org/2000/svg"
+    closeMessage() {
+      $('#message').css("display", "none");
+    }
+
+    render() {
+        const { isAuth } = this.props;
+        return (
+            <React.Fragment>
+                <div className="message" id="message">
+                    <div className="text">
+                        <span>
+                            <strong>Переход на корпоративные учетные записи</strong>
+                        </span>
+                        <p>
+                            Мы внедрили систему авторизации с использованием корпоративных учетных записей. Если вы используете одинаковый email, то
+                            учетные записи свяжутся. Если вы использовали другой email, продолжайте пользоваться{" "}
+                            <a href="https://courses.openedu.urfu.ru/login_old">старой формой входа</a>.
+                        </p>
+                        <p>Это временное решение. Вскоре станет доступно объединение учетных записей.</p>
+                    </div>
+                    <button className="close-btn" onClick={this.closeMessage}>
+                        ×
+                    </button>
+                </div>
+                {/* <div className="bg_img" style={backgroundImg}></div> */}
+                {/* <img className="bg_img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""/> */}
+                <div className="container-fluid shadow-sm">
+                    <nav className="navbar navbar-expand-lg navbar-light container pb-3 pl-0 pr-0">
+                        <NavLink className="navbar-brand" to="/">
+                            <img src="https://openedu.urfu.ru/files/courses_catalog/urfu_logo.png" width="110" img-field="img" alt="" />
+                            {/* <svg version="1.0" className="brand_img" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 490.000000 466.000000" preserveAspectRatio="xMidYMid meet">
                 <g transform="translate(0.000000,466.000000) scale(0.100000,-0.100000)">
                     <path d="M406 4228 c-3 -7 -11 -35 -20 -62 -25 -77 -22 -86 22 -86 52 0 142
@@ -135,68 +150,67 @@ class Header extends Component {
                             -629 0 -10 -37z" />
                 </g>
             </svg> */}
-              {/* <p className="navbar_text_small mt-2">
+                            {/* <p className="navbar_text_small mt-2">
                 Институт технологий <br />
                 открытого образования
             </p> */}
-            </NavLink>
+                        </NavLink>
 
-            <div className="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
-              <ul className="navbar-nav navigate is-show">
-                <li className="nav-item">
-                  {/* <a className="nav-link" href="#">Каталог<span className="sr-only"></span></a> */}
-                  <NavLink to="/" className="nav-link">
-                    Каталог
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  {/* <a className="nav-link" href="#">Организации</a> */}
-                  <NavLink to="/orgs" className="nav-link">
-                    Организации
-                  </NavLink>
-                </li>
-                {/* <li className="nav-item">
+                        <div className="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+                            <ul className="navbar-nav navigate is-show">
+                                <li className="nav-item">
+                                    {/* <a className="nav-link" href="#">Каталог<span className="sr-only"></span></a> */}
+                                    <NavLink to="/" className="nav-link">
+                                        Каталог
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    {/* <a className="nav-link" href="#">Организации</a> */}
+                                    <NavLink to="/orgs" className="nav-link">
+                                        Организации
+                                    </NavLink>
+                                </li>
+                                {/* <li className="nav-item">
                     <NavLink to='/programs' className="nav-link">Программы</NavLink>
                 </li> */}
-                {/* <li className="nav-item">
+                                {/* <li className="nav-item">
                   <NavLink to="/npr" className="nav-link">
                     Обучение НПР
                   </NavLink>
                 </li> */}
-                {/* <li className="nav-item">
+                                {/* <li className="nav-item">
                   <NavLink to="/projects" className="nav-link">
                     Программы
                   </NavLink>
                 </li> */}
-                <li className="nav-item">
-                  {/* <a className="nav-link" href="#">О нас</a> */}
-                  <NavLink to="/about" className="nav-link">
-                    О нас
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <a href={`${MEDIA_LS_URL}/helpdesk`} className="nav-link" id="href">
-                    Помощь
-                  </a>
-                </li>
-                {isAuth ? <MyCourses /> : null}
+                                {/* <li className="nav-item">
+                                    <NavLink to="/about" className="nav-link">
+                                        О нас
+                                    </NavLink>
+                                </li> */}
+                                <li className="nav-item">
+                                    <a href={`${MEDIA_LS_URL}/helpdesk`} className="nav-link" id="href">
+                                        Помощь
+                                    </a>
+                                </li>
+                                {isAuth ? <MyCourses /> : null}
 
-                {isAuth ? null : (
+                                {/* {isAuth ? null : (
                   <li className="nav-item">
                     <a href={`${MEDIA_LS_URL}/register`} className="nav-link" id="href">
                       Регистрация
                     </a>
                   </li>
-                )}
-                {/* <li className="nav-item navigate-search">
+                )} */}
+                                {/* <li className="nav-item navigate-search">
                 <button type="button" className="btn btn-primary btn-circle-search shadow-sm">
                   <IconContext.Provider value={{ size: '2rem', className: 'btn-circle-search-svg shadow-sm' }}>
                     <IoIosSearch />
                   </IconContext.Provider>
                 </button>
               </li> */}
-              </ul>
-              {/* <ul className="navbar-nav navigate is-hidden">
+                            </ul>
+                            {/* <ul className="navbar-nav navigate is-hidden">
               <li className="nav-item">
                 <div className="t-site-search-input">
                   <div className="t838__blockinput">
@@ -218,53 +232,53 @@ class Header extends Component {
                 </div>
               </li>
             </ul> */}
-              {/* <form className="form-inline my-2 my-lg-0">
+                            {/* <form className="form-inline my-2 my-lg-0">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form> */}
-            </div>
+                        </div>
 
-            {/* <a href="" id="href">
+                        {/* <a href="" id="href">
                 <button className="btn btn-outline-primary my-2 my-sm-0">Личный кабинет</button>
             </a> */}
-            {isAuth ? <RenderProfileYes /> : <RenderProfileNo />}
-            {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        {isAuth ? <RenderProfileYes /> : <RenderProfileNo />}
+                        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button> */}
-          </nav>
-          <div className="header">
-            {this.props.location.pathname === '/' ? (
-              <div style={{ float: 'left' }} className="icon-container-search" onClick={this._onButtonClickFilter}>
-                {/* <div className="p-2"><FontAwesomeIcon icon={faSearch} size="2x" /></div> */}
-                <div className="p-2 m-1" id="menuicon-search">
-                  <IconContext.Provider value={{ size: '2em' }}>
-                    <IoIosSearch />
-                  </IconContext.Provider>
-                </div>
-              </div>
-            ) : null}
-            <div className="icon-container d-flex p-2 m-1" onClick={this._onButtonClickMenu}>
-              <div id="menuicon" className="d-flex flex-column">
-                <div className="bar bar1"></div>
-                <div className="bar bar2"></div>
-                <div className="bar bar3"></div>
-              </div>
-            </div>
-            {this.props.location.pathname === `/orgs/${this.props.params.org}` ||
-            this.props.location.pathname === `/${this.props.params.id}` ? (
-              <MobileButtonBack navigate={this.props.navigate} />
-            ) : null}
-            {this.state.showComponentMenu ? <MobileMenu isAuth={isAuth} onButtonClickMenuItem={this._onButtonClickMenuItem}  /> : null}
-            {this.state.showComponentFilter && this.props.location.pathname === '/' ? (
-              <MobileFilter
-                _handleTextChange={this._handleTextChange}
-                submitSearch={this.submitSearch}
-                resetInput={this.resetInput}
-                term={this.state.term}
-              />
-            ) : null}
-            {/* <div className="mobile-menu-filter">
+                    </nav>
+                    <div className="header">
+                        {this.props.location.pathname === "/" ? (
+                            <div style={{ float: "left" }} className="icon-container-search" onClick={this._onButtonClickFilter}>
+                                {/* <div className="p-2"><FontAwesomeIcon icon={faSearch} size="2x" /></div> */}
+                                <div className="p-2 m-1" id="menuicon-search">
+                                    <IconContext.Provider value={{ size: "2em" }}>
+                                        <IoIosSearch />
+                                    </IconContext.Provider>
+                                </div>
+                            </div>
+                        ) : null}
+                        <div className="icon-container d-flex p-2 m-1" onClick={this._onButtonClickMenu}>
+                            <div id="menuicon" className="d-flex flex-column">
+                                <div className="bar bar1"></div>
+                                <div className="bar bar2"></div>
+                                <div className="bar bar3"></div>
+                            </div>
+                        </div>
+                        {this.props.location.pathname === `/orgs/${this.props.params.org}` ||
+                        this.props.location.pathname === `/${this.props.params.id}` ? (
+                            <MobileButtonBack navigate={this.props.navigate} />
+                        ) : null}
+                        {this.state.showComponentMenu ? <MobileMenu isAuth={isAuth} onButtonClickMenuItem={this._onButtonClickMenuItem} /> : null}
+                        {this.state.showComponentFilter && this.props.location.pathname === "/" ? (
+                            <MobileFilter
+                                _handleTextChange={this._handleTextChange}
+                                submitSearch={this.submitSearch}
+                                resetInput={this.resetInput}
+                                term={this.state.term}
+                            />
+                        ) : null}
+                        {/* <div className="mobile-menu-filter">
                     <ul className='menu-filter'>
                     <li className="menu-item-filter">
                         <NavLink exact to='/' className="nav-link">Каталог</NavLink>
@@ -277,56 +291,56 @@ class Header extends Component {
                     </li>
                     </ul>
                 </div> */}
-          </div>
-        </div>
-      </React.Fragment>
-      // <div className="navbar-container">
-      // <div className="filter-back"></div>
-      //     <nav className="navbar navbar-expand-lg navbar-light ">
+                    </div>
+                </div>
+            </React.Fragment>
+            // <div className="navbar-container">
+            // <div className="filter-back"></div>
+            //     <nav className="navbar navbar-expand-lg navbar-light ">
 
-      //     <NavLink className="navbar-brand" exact to="/">
-      //         <img className="logo" src={logo} alt="Открытые образовательные программы"/>
-      //     </NavLink>
-      //     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      //         <span className="navbar-toggler-icon"></span>
-      //     </button>
-      //     <div className="collapse navbar-collapse justify-content-md-center" id="navbarTogglerDemo01">
-      //         {/* <ul className="navbar-nav mr-auto">
-      //             <Search />
-      //         </ul> */}
-      //         <ul className="navbar-nav">
-      //             <li className="nav-item">
-      //                 <NavLink exact to='/' className="nav-link">Каталог</NavLink>
-      //             </li>
-      //             <li className="nav-item">
-      //                 <NavLink to='/org' className="nav-link">Организации</NavLink>
-      //             </li>
-      //             <li className="nav-item">
-      //                 <NavLink to='/programs' className="nav-link">Программы</NavLink>
-      //             </li>
-      //             <li className="nav-item">
-      //                 <NavLink to='/about' className="nav-link">О нас</NavLink>
-      //             </li>
-      //             { isAuth ? <MyCourses /> : null }
-      //         </ul>
-      //     </div>
-      //         { isAuth ? <RenderProfileYes /> : <RenderProfileNo /> }
-      //     </nav>
-      // </div>
-    );
-  }
+            //     <NavLink className="navbar-brand" exact to="/">
+            //         <img className="logo" src={logo} alt="Открытые образовательные программы"/>
+            //     </NavLink>
+            //     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            //         <span className="navbar-toggler-icon"></span>
+            //     </button>
+            //     <div className="collapse navbar-collapse justify-content-md-center" id="navbarTogglerDemo01">
+            //         {/* <ul className="navbar-nav mr-auto">
+            //             <Search />
+            //         </ul> */}
+            //         <ul className="navbar-nav">
+            //             <li className="nav-item">
+            //                 <NavLink exact to='/' className="nav-link">Каталог</NavLink>
+            //             </li>
+            //             <li className="nav-item">
+            //                 <NavLink to='/org' className="nav-link">Организации</NavLink>
+            //             </li>
+            //             <li className="nav-item">
+            //                 <NavLink to='/programs' className="nav-link">Программы</NavLink>
+            //             </li>
+            //             <li className="nav-item">
+            //                 <NavLink to='/about' className="nav-link">О нас</NavLink>
+            //             </li>
+            //             { isAuth ? <MyCourses /> : null }
+            //         </ul>
+            //     </div>
+            //         { isAuth ? <RenderProfileYes /> : <RenderProfileNo /> }
+            //     </nav>
+            // </div>
+        );
+    }
 }
 
 const mapStateToProps = (state) => ({
-  data: state.user.items_user,
-  isAuth: state.user.isAuth,
-  loading_user: state.user.loading,
+    data: state.user.items_user,
+    isAuth: state.user.isAuth,
+    loading_user: state.user.loading,
 });
 
 const mapDispatchToProps = {
-  fetchUserState,
-  searchInput,
-  resetSearch,
+    fetchUserState,
+    searchInput,
+    resetSearch,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

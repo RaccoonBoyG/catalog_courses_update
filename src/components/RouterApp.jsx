@@ -5,7 +5,7 @@ import ProjectsAbout from './ProjectsAbout';
 // import Programs from "./Programs";
 import ProgramAbout from './ProgramAbout';
 import Footer from './Footer';
-import AboutUs from '../containers/AboutUs';
+// import AboutUs from '../containers/AboutUs';
 import Tech from '../containers/Tech';
 import Privacy from '../containers/Privacy';
 import OrganizationAbout from './OrganizationAbout';
@@ -31,7 +31,7 @@ class RouterApp extends Component {
           <div style={{ background: '#f5f5f5' }}>
             <Routes>
               <Route path="/" element={<Catalog />} />
-              <Route path="/about" element={<AboutUs />} />
+              {/* <Route path="/about" element={<AboutUs />} /> */}
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/tech" element={<Tech />} />
               <Route path="/404" element={<NotFound />} />

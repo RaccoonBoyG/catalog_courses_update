@@ -25,6 +25,10 @@ html {
   }
   @media screen and (max-width: $tableWidth) {
     font-size: 15px;
+    .message { 
+      margin-top: rem(50) !important;
+      margin-bottom: 0 !important;
+     }
   }
   @media screen and (max-width: $phoneWidth) {
     font-size: 14px;
@@ -253,7 +257,10 @@ html {
       margin-top: rem(60);
     }
     .margin-custom-catalog_1 {
-      margin-top: rem(90);
+      h3{ 
+        padding-top: rem(30);
+      }
+
     }
     .backImg {
       background-image: linear-gradient(
@@ -342,7 +349,9 @@ html {
       margin-top: rem(60);
     }
     .margin-custom-catalog_1 {
-      margin-top: rem(90);
+      h3{ 
+        padding-top: rem(30);
+      }
     }
     .backImg {
       background-image: linear-gradient(
@@ -435,7 +444,9 @@ html {
       margin-top: rem(60);
     }
     .margin-custom-catalog_1 {
-      margin-top: rem(90);
+      h3{ 
+        padding-top: rem(30);
+      }
     }
     .backImg {
       background-image: linear-gradient(
@@ -508,5 +519,34 @@ html {
 
   .text-muted {
     // font-family: $font-name-urfu;
+  }
+  .message {
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff9db; /* Светло-желтый фон */
+    color: #664d03; /* Цвет текста */
+    border: 1px solid #ffeeba; /* Граница */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    position: relative;
+  }
+  .message .text {
+    margin: 10px 15px 0;
+  }
+  /* Кнопка закрытия */
+  .message .close-btn {
+    background: none;
+    border: none;
+    color: #664d03; /* Цвет кнопки */
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    margin: 15px;
+  }
+
+  .message .close-btn:hover {
+    color: #000; /* Цвет кнопки при наведении */
   }
 }
