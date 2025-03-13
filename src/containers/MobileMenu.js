@@ -20,28 +20,28 @@ const MobileMenu = props => {
             Организации
           </NavLink>
         </li>
-        <li className="menu-item" onClick={props.onButtonClickMenuItem}>
+        {/* <li className="menu-item" onClick={props.onButtonClickMenuItem}>
           <NavLink to="/projects" className="nav-link">
             Программы
           </NavLink>
-        </li>
+        </li> */}
         {/* <li className="menu-item">
           <NavLink to="/programs" className="nav-link">
             Программы
           </NavLink>
         </li> */}
-        <li className="menu-item" onClick={props.onButtonClickMenuItem}>
+        {/* <li className="menu-item" onClick={props.onButtonClickMenuItem}>
           <NavLink to="/about" className="nav-link">
             О нас
           </NavLink>
-        </li>
-        {props.isAuth ? null : (
+        </li> */}
+        {/* {props.isAuth ? null : (
           <li className="menu-item" onClick={props.onButtonClickMenuItem}>
             <a href={`${MEDIA_LS_URL}/register`} className="nav-link" id="href">
               Регистрация
             </a>
           </li>
-        )}
+        )} */}
         {props.isAuth ? null : (
           <li className="menu-item" onClick={props.onButtonClickMenuItem}>
             <a href={`${MEDIA_LS_URL}/login_old`} className="nav-link" id="href">
