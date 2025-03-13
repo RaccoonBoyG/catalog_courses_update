@@ -13,7 +13,7 @@ class RenderProfileNo extends Component {
         </div> */}
 
         <div className="form-inline my-2 my-lg-0">
-          <a href={`${MEDIA_LS_URL}/login`} id="href">
+          <a href={`${MEDIA_LS_URL}/login_old`} id="href">
             <button className="btn btn-outline-primary my-2 my-sm-0">
               Вход
             </button>

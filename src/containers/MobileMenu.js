@@ -44,7 +44,7 @@ const MobileMenu = props => {
         )}
         {props.isAuth ? null : (
           <li className="menu-item" onClick={props.onButtonClickMenuItem}>
-            <a href={`${MEDIA_LS_URL}/login`} className="nav-link" id="href">
+            <a href={`${MEDIA_LS_URL}/login_old`} className="nav-link" id="href">
               Вход
             </a>
           </li>

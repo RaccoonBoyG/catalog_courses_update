@@ -59,7 +59,7 @@ class ButtonPay extends Component {
       </a>
     );
     let button_auth = (
-      <a href={`${MEDIA_LS_URL}/login`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
+      <a href={`${MEDIA_LS_URL}/login_old`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
         <button className="btn btn-light btn-lg mt-2 d-flex" style={{ borderRadius: 0 }}>
           Оплатить курс
         </button>

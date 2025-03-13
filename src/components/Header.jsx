@@ -107,7 +107,7 @@ class Header extends Component {
         const { isAuth } = this.props;
         return (
             <React.Fragment>
-                <div className="message" id="message">
+                {/* <div className="message" id="message">
                     <div className="text">
                         <span>
                             <strong>Переход на корпоративные учетные записи</strong>
@@ -122,7 +122,7 @@ class Header extends Component {
                     <button className="close-btn" onClick={this.closeMessage}>
                         ×
                     </button>
-                </div>
+                </div> */}
                 {/* <div className="bg_img" style={backgroundImg}></div> */}
                 {/* <img className="bg_img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""/> */}
                 <div className="container-fluid shadow-sm">

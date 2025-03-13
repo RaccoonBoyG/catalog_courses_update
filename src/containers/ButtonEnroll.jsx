@@ -56,7 +56,7 @@ class ButtonEnroll extends Component {
       </button>
     );
     let button_auth = (
-      <a href={`${MEDIA_LS_URL}/login`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
+      <a href={`${MEDIA_LS_URL}/login_old`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
         <button style={{ borderRadius: 0 }} className="btn btn-light btn-lg mt-2 d-flex shadow">
           Записаться на курс
         </button>
