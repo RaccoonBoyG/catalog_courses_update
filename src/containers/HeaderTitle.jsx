@@ -71,7 +71,7 @@ const button_In_only = (props) => (
 );
 
 const button_auth = () => (
-  <a href={`${MEDIA_LS_URL}/login_old`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
+  <a href={`${MEDIA_LS_URL}/login`} id="href" style={{ borderRadius: 0, textDecoration: 'none' }}>
     <button style={{ borderRadius: 0 }} className="animated fadeIn btn btn-light btn-lg mt-2 d-flex shadow">
       Записаться на курс
     </button>
