@@ -1,37 +1,60 @@
+.t-site-search-input {
+  display: block; // изменено с table, чтобы проще управлять flex
+  width: 100%;
+  position: relative;
+  max-width: 500px; // ограничение максимальной ширины
+  margin: 0 auto; // центрирование по горизонтали
+}
+
+.t838__blockinput {
+  display: flex; // меняем с table-cell на flex для выравнивания инпута и крестика
+  align-items: center;
+  height: 40px; // фиксированная высота для удобства
+  width: 100%;
+  position: relative;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 35px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.t-input {
+  flex-grow: 1;
+  border: none;
+  height: 100%;
+  font-size: 1rem;
+  padding-left: 15px;
+  padding-right: 0; // padding-right убираем, теперь крестик занимает место справа без перекрытия
+  border-radius: 35px;
+  outline: none;
+
+  &::placeholder {
+    color: #999;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none !important;
+  }
+}
+
 .t-site-search-close {
   fill: #b6b6b6;
   width: 1.5rem;
-  position: absolute;
-  margin: auto 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding-right: 10px;
-  padding-left: 20px;
+  height: 1.5rem;
+  cursor: pointer;
+  position: relative; // убираем абсолютное позиционирование, чтобы не растягивался
+  margin-left: 10px; // отступ слева от инпута
   display: none;
-  box-sizing: content-box;
+  flex-shrink: 0; // фиксируем размер и не даём сжиматься
+
+  &:hover {
+    fill: #555;
+  }
 }
 
 .show_close {
   display: block !important;
-}
-
-.t838__blockinput {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-
-.t-site-search-input {
-  display: table;
-  width: 100%;
-}
-
-.t-input {
-  padding-right: rem(54);
-  border-radius: 35px;
 }
 
 .is-show {

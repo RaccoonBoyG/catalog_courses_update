@@ -1,7 +1,6 @@
 @import './scss/utils/vars';
 @import './scss/modules/bootstrapTheme';
 @import './scss/utils/libs';
-// @import './scss/utils/_fonts';
 @import './scss/utils/mixins';
 @import './scss/modules/header';
 @import './scss/modules/headerTitle';
@@ -20,199 +19,123 @@ html {
   font-size: $mainFontSize;
   height: 100%;
   line-height: $mainLineHeight;
-  @media screen and (max-width: $desktopWidth) {
-    font-size: 16px;
+
+  @include lg-desktop {
+    font-size: 18px;
+    .bg_img {
+      height: rem(750);
+    }
+    .top-txt-container {
+      min-height: rem(800);
+    }
+    .top-txt-container-sub {
+      min-height: rem(200);
+    }
+    .p-custom {
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
+    }
+    .p-custom-2 {
+      padding: 3rem;
+    }
+    .header {
+      display: none;
+    }
+    .backImg {
+      @include back-img-style(40%, 100% 40%, 200%);
+      height: 200px;
+    }
+    .img-about-size {
+      @include img-about-size(95px);
+    }
   }
-  @media screen and (max-width: $tableWidth) {
+
+  @include desktop {
+    font-size: 16px;
+    .bg_img {
+      height: rem(750);
+    }
+    .top-txt-container {
+      min-height: rem(800);
+    }
+    .top-txt-container-sub {
+      min-height: rem(200);
+    }
+    .p-custom,
+    .p-custom-2 {
+      padding: 3rem;
+    }
+    .header {
+      display: none;
+    }
+    .backImg {
+      @include back-img-style(40%, 100% 40%, 200%);
+      height: 200px;
+    }
+    .img-about-size {
+      @include img-about-size(95px);
+    }
+    .teacher {
+      @include teacher-style;
+    }
+  }
+
+  @include tablet {
     font-size: 15px;
-    .message { 
+    .message {
       margin-top: rem(50) !important;
       margin-bottom: 0 !important;
-     }
-  }
-  @media screen and (max-width: $phoneWidth) {
-    font-size: 14px;
-  }
-
-  @media only screen and (min-width: $lgDesktopWidth) {
-    .bg_img {
-      height: rem(750);
     }
-    .top-txt-container {
-      min-height: rem(800);
-    }
-    .top-txt-container-sub {
-      min-height: rem(200);
-    }
-    .p-custom {
-      padding-left: 3rem !important;
-      padding-right: 3rem !important;
-    }
-    .p-custom-2 {
-      padding: 3rem;
-    }
-    .header {
-      display: none;
-    }
-    .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 25%,
-                      rgba(247, 247, 247, 0) 65%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: 100% 40%;
-      background-repeat: no-repeat;
-      background-size: auto 200%;
-      height: 200px;
-    }
-    .img-about-size {
-      max-height: 95px;
-      max-width: 95px;
-    }
-  }
-  @media only screen and (min-width: $desktopWidth) and (max-width: $lgDesktopWidth) {
-    .bg_img {
-      height: rem(750);
-    }
-    .top-txt-container {
-      min-height: rem(800);
-    }
-    .top-txt-container-sub {
-      min-height: rem(200);
-    }
-    .p-custom {
-      padding-left: 3rem !important;
-      padding-right: 3rem !important;
-    }
-    .p-custom-2 {
-      padding: 3rem;
-    }
-    .header {
-      display: none;
-    }
-    .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 25%,
-                      rgba(247, 247, 247, 0) 65%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: 100% 40%;
-      background-repeat: no-repeat;
-      background-size: auto 200%;
-      height: 200px;
-    }
-    .img-about-size {
-      max-height: 95px;
-      max-width: 95px;
-    }
-
-    .teacher {
-      height: rem(150);
-      margin: rem(20);
-
-      h3 {
-        padding-top: rem(20);
-      }
-    }
-    .teacher-image {
-      max-height: rem(100);
-    }
-    .teacher-image img {
-      margin-right: rem(20);
-      max-height: rem(150);
-      max-width: rem(150);
-    }
-  }
-  @media only screen and (min-width: $tableWidth) and (max-width: $desktopWidth) {
     .bg_img {
       height: rem(550);
     }
-
     .top-txt-container {
       min-height: rem(600);
     }
-
     .top-txt-container-sub {
       min-height: rem(310);
     }
-
-    .p-custom {
-      padding-left: 3rem !important;
-      padding-right: 3rem !important;
-    }
-
+    .p-custom,
     .p-custom-2 {
       padding: 3rem;
     }
     .navbar {
       display: flex !important;
     }
-    .filter_pc {
+    .filter_pc,
+    .search_pc {
       display: none;
     }
     .search_pc {
       display: block;
     }
     .navbar-expand-lg .navbar-collapse {
-      flex-basis: auto;
-    }
-    .navbar-expand-lg .navbar-collapse {
       display: flex !important;
+      flex-basis: auto;
     }
     .navbar-nav {
       flex-direction: row;
-
       .nav-item {
-        padding: .5rem;
+        padding: 0.5rem;
       }
     }
     .header {
       display: none;
     }
     .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 40%,
-                      rgba(247, 247, 247, 0) 60%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: auto 50%;
-      background-repeat: no-repeat;
-      background-size: auto 200%;
+      @include back-img-style(40%, auto 50%, 200%);
       height: 200px;
     }
     .img-about-size {
-      max-height: 95px;
-      max-width: 95px;
+      @include img-about-size(95px);
     }
     .teacher {
-      // padding: rem(20);
-      height: 100%;
-      margin: rem(20);
-
-      h3 {
-        padding-top: rem(20);
-      }
-
-      .teacher-image {
-        max-height: rem(100);
-        // margin: rem(20);
-      }
-
-      img {
-        // padding: rem(20);
-        margin-right: 2rem;
-        max-height: rem(150);
-        max-width: rem(150);
-      }
+      @include teacher-style;
     }
   }
-  @media only screen and (min-width: $phoneWidth) and (max-width: $tableWidth) {
+
+  @include phone {
+    font-size: 14px;
     .bg_img {
       height: rem(400);
     }
@@ -222,8 +145,13 @@ html {
     .top-txt-container-sub {
       min-height: rem(330);
     }
-    .custom-profile-img {
-      display: none;
+    .custom-profile-img,
+    .mobile-action,
+    .navbar,
+    .filter_pc,
+    .search_pc,
+    .buttonBackPC {
+      display: none !important;
     }
     .p-custom {
       padding-left: 1.5rem !important;
@@ -232,265 +160,68 @@ html {
     .p-custom-2 {
       padding: 1rem;
     }
-    .mobile-action {
-      display: none !important;
-    }
-    .navbar {
-      display: none !important;
-    }
-    .filter_pc {
-      display: none;
-    }
-    .search_pc {
-      display: none;
-    }
-    .header {
-      display: block;
-    }
     .container-course_about {
       margin-top: 4rem !important;
-    }
-    .buttonBackPC {
-      display: none !important;
     }
     .margin-custom-catalog {
       margin-top: rem(60);
     }
-    .margin-custom-catalog_1 {
-      h3{ 
-        padding-top: rem(30);
-      }
-
+    .margin-custom-catalog_1 h3 {
+      padding-top: rem(30);
     }
     .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 40%,
-                      rgba(247, 247, 247, 0) 60%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: auto 100%;
-      background-repeat: no-repeat;
-      background-size: auto 195%;
-      height: 150px;
+      @include back-img-style(40%, auto 100%, 195%);
       margin-top: rem(59);
-
-      h2 {
-        font-size: 1.8rem;
-        padding-left: 0 !important;
-      }
+      height: 150px;
+    }
+    .backImg h2,
+    .title_catalog h2 {
+      font-size: 1.8rem;
+      padding-left: 0 !important;
     }
     .img-about-size {
-      max-height: 95px;
-      max-width: 95px;
-    }
-    .title_catalog {
-      h2 {
-        font-size: 1.8rem;
-      }
+      @include img-about-size(95px);
     }
     .teacher {
-      height: 100%;
-      margin: rem(20);
-
-      h3 {
-        padding-top: rem(20);
-      }
-    }
-    .teacher-image {
-      max-height: rem(100);
-    }
-    .teacher-image img {
-      margin-right: 2rem;
-      max-height: rem(150);
-      max-width: rem(150);
+      @include teacher-style;
     }
   }
-  @media only screen and (min-width: $smPhoneWidth) and (max-width: $phoneWidth) {
-    .bg_img {
-      height: rem(400);
-    }
-    .top-txt-container {
-      min-height: rem(420);
-    }
+
+  @include sm-phone {
     .top-txt-container-sub {
       min-height: rem(360);
     }
-    .custom-profile-img {
-      display: none;
-    }
-    .p-custom {
-      padding-left: 1.5rem !important;
-      padding-right: 1.5rem !important;
-    }
-    .p-custom-2 {
-      padding: 1rem;
-    }
-    .mobile-action {
-      display: none !important;
-    }
-    .navbar {
-      display: none !important;
-    }
-    .filter_pc {
-      display: none;
-    }
-    .search_pc {
-      display: none;
-    }
-    .container-course_about {
-      margin-top: 4rem !important;
-    }
-    .buttonBackPC {
-      display: none !important;
-    }
-    .margin-custom-catalog {
-      margin-top: rem(60);
-    }
-    .margin-custom-catalog_1 {
-      h3{ 
-        padding-top: rem(30);
-      }
-    }
     .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 40%,
-                      rgba(247, 247, 247, 0) 60%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: -40% -40%;
-      background-repeat: no-repeat;
-      background-size: auto 120%;
-      height: 150px;
+      @include back-img-style(40%, -40% -40%, 120%);
       margin-top: rem(49);
-
-      h2 {
-        font-size: 1.5rem;
-        padding-left: 0rem !important;
-      }
+      height: 150px;
+    }
+    .backImg h2 {
+      font-size: 1.5rem;
+      padding-left: 0rem !important;
     }
     .img-about-size {
-      max-height: 50px;
-      max-width: 50px;
-    }
-    .title_catalog {
-      h2 {
-        font-size: 1.8rem;
-      }
-    }
-
-    .teacher {
-      height: 100%;
-      margin: rem(20);
-
-      h3 {
-        padding-top: rem(20);
-      }
-    }
-    .teacher-image {
-      max-height: rem(100);
-    }
-    .teacher-image img {
-      margin-right: 2rem;
-      max-height: rem(150);
-      max-width: rem(150);
-    }
-  }
-  @media only screen and (min-width: 0) and (max-width: $smPhoneWidth) {
-    .bg_img {
-      height: rem(400);
-    }
-    .top-txt-container {
-      min-height: rem(430);
-    }
-    .top-txt-container-sub {
-      min-height: rem(350);
-    }
-    .custom-profile-img {
-      display: none;
-    }
-    .p-custom {
-      padding-left: 1.5rem !important;
-      padding-right: 1.5rem !important;
-    }
-    .p-custom-2 {
-      padding: 1rem;
-    }
-    .mobile-action {
-      display: none !important;
-    }
-    .navbar {
-      display: none !important;
-    }
-    .filter_pc {
-      display: none;
-    }
-    .search_pc {
-      display: none;
-    }
-    .container-course_about {
-      margin-top: 4rem !important;
-    }
-    .buttonBackPC {
-      display: none !important;
+      @include img-about-size(50px);
     }
     .card-title-org {
       font-size: 1.2rem;
     }
-    .margin-custom-catalog {
-      margin-top: rem(60);
-    }
-    .margin-custom-catalog_1 {
-      h3{ 
-        padding-top: rem(30);
-      }
-    }
-    .backImg {
-      background-image: linear-gradient(
-                      141deg,
-                      $shades-gradient_1 0%,
-                      $shades-gradient_2 45%,
-                      rgba(247, 247, 247, 0) 65%
-      ),
-      url("https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png");
-      background-position: -5% -50%;
-      background-repeat: no-repeat;
-      background-size: auto 120%;
-      height: 150px;
-      margin-top: rem(45);
-
-      h2 {
-        font-size: 1.5rem;
-        padding-left: 0 !important;
-      }
-    }
-    .title_catalog {
-      h2 {
-        font-size: 1.8rem;
-      }
-    }
-
-    .teacher {
-      height: 100%;
-      margin: rem(20);
-
-      h3 {
-        padding-top: rem(20);
-      }
-    }
-    .teacher-image {
-      max-height: rem(100);
-    }
-    .teacher-image img {
-      margin-right: rem(20);
-      max-height: rem(150);
-      max-width: rem(150);
-    }
   }
 
+  @include xs-phone {
+    .top-txt-container-sub {
+      min-height: rem(350);
+    }
+    .backImg {
+      @include back-img-style(45%, -5% -50%, 120%);
+      margin-top: rem(45);
+      height: 150px;
+    }
+    .backImg h2 {
+      font-size: 1.5rem;
+      padding-left: 0 !important;
+    }
+  }
 
   body {
     font-family: $mainFont;
@@ -501,8 +232,6 @@ html {
     margin: 0;
     padding: 0;
     color: $default-color;
-    font-size: 16px;
-    background: #fff;
 
     h2 {
       font-size: 2rem;
@@ -517,36 +246,34 @@ html {
     }
   }
 
-  .text-muted {
-    // font-family: $font-name-urfu;
-  }
   .message {
     display: flex;
     border-radius: 4px;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff9db; /* Светло-желтый фон */
-    color: #664d03; /* Цвет текста */
-    border: 1px solid #ffeeba; /* Граница */
+    background-color: #fff9db;
+    color: #664d03;
+    border: 1px solid #ffeeba;
     font-family: Arial, sans-serif;
     font-size: 14px;
     position: relative;
-  }
-  .message .text {
-    margin: 10px 15px 0;
-  }
-  /* Кнопка закрытия */
-  .message .close-btn {
-    background: none;
-    border: none;
-    color: #664d03; /* Цвет кнопки */
-    font-size: 16px;
-    cursor: pointer;
-    padding: 0;
-    margin: 15px;
-  }
 
-  .message .close-btn:hover {
-    color: #000; /* Цвет кнопки при наведении */
+    .text {
+      margin: 10px 15px 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #664d03;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0;
+      margin: 15px;
+
+      &:hover {
+        color: #000;
+      }
+    }
   }
 }

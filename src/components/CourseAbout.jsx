@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {fetchAbout} from '../store/course_about/action';
-import {BigPlayButton, ControlBar, Player, PlayToggle} from 'video-react';
-import {clearLoadingUser, fetchEnrollState, fetchUserState} from '../store/user/action';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchAbout } from '../store/course_about/action';
+import { BigPlayButton, ControlBar, Player, PlayToggle } from 'video-react';
+import { clearLoadingUser, fetchEnrollState, fetchUserState } from '../store/user/action';
 import 'animate.css/animate.min.css';
 // import ButtonEnroll from "../containers/ButtonEnroll";
 // import ButtonReadMore from "../containers/ButtonReadMore";
@@ -13,7 +13,7 @@ import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 // import { IoMdArrowBack } from "react-icons/io";
 // import { IconContext } from "react-icons";
 import Spinner from '../containers/Spinner';
-import {MEDIA_LS_URL} from '../services/openurfu';
+import { MEDIA_LS_URL } from '../services/openurfu';
 import Cookies from 'js-cookie';
 import withRouter from '../utils/withRouter';
 
@@ -38,8 +38,8 @@ class CourseAbout extends Component {
 
   async componentDidMount() {
     let test = async () => {
-      return await this.props.navigate("/404", {replace: true})
-    }
+      return await this.props.navigate('/404', { replace: true });
+    };
     await this.props.fetchAbout(this.props.params.id, this.props.navigate);
     window.scrollTo(0, 0);
     scroll();
@@ -54,13 +54,13 @@ class CourseAbout extends Component {
         'Content-Type': 'application/json',
         Accept: 'text-plain, */*',
         'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRFToken': token
+        'X-CSRFToken': token,
       },
       method: 'post',
       credentials: 'same-origin',
       body: JSON.stringify({
-        course_details: { course_id: this.props.params.id }
-      })
+        course_details: { course_id: this.props.params.id },
+      }),
     });
     const response = await postEnroll.text();
     if (postEnroll.status === 200) window.location.reload();
@@ -69,14 +69,23 @@ class CourseAbout extends Component {
 
   render() {
     // const sanitizer = dompurify.sanitize;
-    const { isAuth, data, course_enroll_user, params, loading_user, loading, modes_data, navigate } = this.props;
+    const {
+      isAuth,
+      data,
+      course_enroll_user,
+      params,
+      loading_user,
+      loading,
+      modes_data,
+      navigate,
+    } = this.props;
     // if (!loading_user) {
     //   this.props.fetchEnrollState(this.props.params.id);
     // }
     // var config = { ALLOWED_TAGS: ['iframe', 'p', 'div', 'br', 'b', 'section', 'h1', 'h2', 'h3', 'h4', 'h5', 'img', 'strong'] };
-    // if (document.querySelector('iframe') == null) 
+    // if (document.querySelector('iframe') == null)
     // {
-    //   console.log("no iframes"); 
+    //   console.log("no iframes");
     // }
     // else {
     //   Array.prototype.forEach.call(
@@ -88,7 +97,7 @@ class CourseAbout extends Component {
     //   );
     // }
     if (loading && loading_user && data.length === 0) {
-      return <Spinner/>;
+      return <Spinner />;
     }
 
     function PromoPlayer(props) {
@@ -102,47 +111,50 @@ class CourseAbout extends Component {
 
       if (course_video_uri && (course_image_uri || promo_image)) {
         return (
-            <div className="mb-5">
-              <Player
-                  autoPlay={false}
-                  playsInline
-                  preload={'metadata'}
-                  poster={course_image_uri || promo_image}
-                  src={course_video_uri}
-              >
-                <BigPlayButton position="center"/>
-                <ControlBar autoHide={false} disableDefaultControls={false}>
-                  <PlayToggle/>
-                </ControlBar>
-              </Player>
-            </div>
-        )
+          <div className="mb-5">
+            <Player
+              autoPlay={false}
+              playsInline
+              preload={'metadata'}
+              poster={course_image_uri || promo_image}
+              src={course_video_uri}
+            >
+              <BigPlayButton position="center" />
+              <ControlBar autoHide={false} disableDefaultControls={false}>
+                <PlayToggle />
+              </ControlBar>
+            </Player>
+          </div>
+        );
       } else {
         return (
-            <img src={course_image_uri} alt={course_title} className="img-fluid mb-5"/>
-        )
+          <img src={course_image_uri} alt={course_title} className="img-fluid mb-5" />
+        );
       }
     }
 
     return (
-        <React.Fragment>
-          <AboutRender
-              name={data.name}
-              invitation_only={data.invitation_only}
-              class={'top-txt-container-sub'}
-              height={100}
-              isAuth={isAuth}
-              course_enroll_user={course_enroll_user}
-              params={params}
-              search={navigate.search}
-              modes_data={modes_data}
-              changeEnroll={this.changeEnroll}
-          />
-          {/* <div style={{ ...backImg }}></div> */}
-          <div className="container pb-5 pt-3 mb-5 p-custom-2">
-            <div className=" animated fadeIn text-custom-dark mb-3 p-0" style={{borderRadius: '0'}}>
-              <div className="d-flex flex-row justify-content-between">
-                {/* <div className="d-flex flex-row">
+      <React.Fragment>
+        <AboutRender
+          name={data.name}
+          invitation_only={data.invitation_only}
+          className={'top-txt-container-sub'}
+          height={100}
+          isAuth={isAuth}
+          course_enroll_user={course_enroll_user}
+          params={params}
+          search={navigate.search}
+          modes_data={modes_data}
+          changeEnroll={this.changeEnroll}
+        />
+        {/* <div style={{ ...backImg }}></div> */}
+        <div className="container pb-5 pt-3 mb-5 p-custom-2">
+          <div
+            className=" animated fadeIn text-custom-dark mb-3 p-0"
+            style={{ borderRadius: '0' }}
+          >
+            <div className="d-flex flex-row justify-content-between">
+              {/* <div className="d-flex flex-row">
                 <button
                   className="btn btn-primary m-3 buttonBackPC d-flex"
                   onClick={this.props.history.goBack}
@@ -152,19 +164,21 @@ class CourseAbout extends Component {
                   </IconContext.Provider>
                 </button>
               </div> */}
-              </div>
-              <div className="container p-5 bg-white shadow-sm">
-
-                <PromoPlayer course_video_uri={data.course_video_uri} course_image_uri={data.course_image_uri}/>
-
-                <div
-                    className="question-text"
-                    dangerouslySetInnerHTML={{
-                      __html: data.overview
-                    }}
-                />
-              </div>
             </div>
+            <div className="container p-5 bg-white shadow-sm">
+              <PromoPlayer
+                course_video_uri={data.course_video_uri}
+                course_image_uri={data.course_image_uri}
+              />
+
+              <div
+                className="question-text"
+                dangerouslySetInnerHTML={{
+                  __html: data.overview,
+                }}
+              />
+            </div>
+          </div>
         </div>
         <ButtonScrollToTop />
       </React.Fragment>
@@ -172,24 +186,21 @@ class CourseAbout extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.course_about.items,
   isAuth: state.user.isAuth,
   course_enroll_user: state.user.course_enroll_user,
   loading: state.course_about.loading,
   data_user: state.user.items_user,
   loading_user: state.user.loading,
-  modes_data: state.user.course_user_modes
+  modes_data: state.user.course_user_modes,
 });
 
 const mapDispatchToProps = {
   fetchAbout,
   fetchEnrollState,
   fetchUserState,
-  clearLoadingUser
+  clearLoadingUser,
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CourseAbout));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CourseAbout));

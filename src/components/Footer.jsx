@@ -65,7 +65,7 @@ class Footer extends Component {
                 openedu@urfu.ru
               </p>
               <h6 className="text-uppercase mt-4 mb-2 font-weight-bold text-custom-dark">
-                Контакты
+                Техническое сопровождение
               </h6>
               <p className="text-neutral-regular">
                 {/* <i className="fas fa-home mr-3"></i> */}

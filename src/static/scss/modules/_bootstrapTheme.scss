@@ -1,12 +1,13 @@
 $theme-colors: (
-  "primary": $shades-secondary,
-  "primary-dark": $shades-mid-dark-second,
-  "dark": $navbar-color,
-  "custom-dark": $dark-color,
-  "custom-dark2": $dark-color2,
-  "neutral-regular": $neutral-regular,
-  "dark-texts": $dark-color-text,
-  "neutral-placeholder": $neutral-placeholder
+  'primary': $primary-color,
+  'primary-dark': $primary-color-dark,
+  'secondary': $secondary-color-dark,
+  'dark': $navbar-color,
+  'custom-dark': $dark-color,
+  'custom-dark2': $dark-color2,
+  'neutral-regular': $neutral-regular,
+  'dark-texts': $dark-color-text,
+  'neutral-placeholder': $neutral-placeholder,
 );
 
 $border-radius: 0;

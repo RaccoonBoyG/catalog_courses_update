@@ -7,7 +7,7 @@
     $context: $context * 1px;
   }
 
-  @return $pixels / $context * 1rem;
+  @return calc($pixels / $context) * 1rem;
 }
 
 @mixin size($width, $height: $width) {
@@ -28,4 +28,80 @@
   :-ms-input-placeholder {
     @content;
   }
+}
+// Media Query Mixins
+@mixin lg-desktop {
+  @media only screen and (min-width: $lgDesktopWidth) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $desktopWidth) and (max-width: $lgDesktopWidth) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: $tableWidth) and (max-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media only screen and (min-width: $phoneWidth) and (max-width: $tableWidth) {
+    @content;
+  }
+}
+
+@mixin sm-phone {
+  @media only screen and (min-width: $smPhoneWidth) and (max-width: $phoneWidth) {
+    @content;
+  }
+}
+
+@mixin xs-phone {
+  @media only screen and (max-width: $smPhoneWidth) {
+    @content;
+  }
+}
+
+// Common Utility Classes
+@mixin back-img-style($gradient-pos, $img-pos, $size) {
+  background-image:
+    linear-gradient(
+      141deg,
+      $shades-gradient_1 0%,
+      $shades-gradient_2 40%,
+      rgba(247, 247, 247, 0) 60%
+    ),
+    url('https://edcrunch.urfu.ru/assets/images/banner/1-02_2019.png');
+  background-position: $img-pos;
+  background-repeat: no-repeat;
+  background-size: auto $size;
+  height: 150px;
+}
+
+@mixin teacher-style {
+  height: 100%;
+  margin: rem(20);
+
+  h3 {
+    padding-top: rem(20);
+  }
+
+  .teacher-image {
+    max-height: rem(100);
+  }
+
+  .teacher-image img {
+    margin-right: 2rem;
+    max-height: rem(150);
+    max-width: rem(150);
+  }
+}
+
+@mixin img-about-size($size) {
+  max-height: $size;
+  max-width: $size;
 }

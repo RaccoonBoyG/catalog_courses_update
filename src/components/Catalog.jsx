@@ -12,11 +12,10 @@ class Catalog extends Component {
   }
 
   render() {
-    let menu = document.getElementsByClassName('navbar');
     return (
       <React.Fragment>
         {/* <HeaderBackground /> */}
-        {/* <HeaderTitle title={'Онлайн-курсы УрФУ'} class={'top-txt-container-sub'} /> */}
+        {/* <HeaderTitle title={'Онлайн-курсы УрФУ'} className={'top-txt-container-sub'} /> */}
         <Courses />
         <ButtonScrollToTop />
       </React.Fragment>

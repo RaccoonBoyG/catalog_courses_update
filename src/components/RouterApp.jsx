@@ -28,7 +28,7 @@ class RouterApp extends Component {
       <main className="App" id="app">
         <BrowserRouter>
           <Header />
-          <div style={{ background: '#f5f5f5' }}>
+          <div>
             <Routes>
               <Route path="/" element={<Catalog />} />
               {/* <Route path="/about" element={<AboutUs />} /> */}
@@ -39,8 +39,8 @@ class RouterApp extends Component {
               <Route path="/orgs" element={<Organization />} />
               {/* <Route path="/programs/:program" component={ProgramAbout} />
                 <Route path="/programs" component={Programs} /> */}
-              <Route path="/projects/:project/:program" element={<ProgramAbout/>} />
-              <Route path="/projects/:project" element={<ProjectsAbout/>} />
+              <Route path="/projects/:project/:program" element={<ProgramAbout />} />
+              <Route path="/projects/:project" element={<ProjectsAbout />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/:id" element={<CourseAbout />} />
             </Routes>

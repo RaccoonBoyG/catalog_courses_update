@@ -1,151 +1,81 @@
-.card-catalog {
-  border-radius: 0px;
-  border: none;
-  cursor: pointer;
-  float: left;
-  overflow: hidden;
-  position: relative;
-  &:hover {
-    transition: all 0.1s ease-out 0.1s;
-    box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.5);
-  }
-  .card-catalog-img {
-    display: block;
-    position: relative;
-    -webkit-transition: all 0.4s ease-in;
-    transition: all 0.4s ease-in;
-    width: 100%;
-    min-width: 350px;
-    height: 250px;
-  }
-  .overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-  }
-  a.info {
-    text-transform: uppercase;
-    text-align: center;
-    position: relative;
-    font-size: $mainFontSize;
-    background: rgba(0, 0, 0, 0.6);
-    text-decoration: none;
-    color: $color_2;
-    display: inline-block;
-    padding: 10px 30px;
-    margin: 100px 0 0 0;
-    width: 100%;
-  }
-}
-// .card-catalog-img {
-//   border: none;
-//   border-radius: 0px;
-//   height: 250px;
-// }
-.card-catalog-body {
-  color: $color_1;
-  font-weight: 300;
-  min-height: 190px;
-  border: none;
-}
-.card-catalog-title {
-  font-size: $mainFontSize;
-}
-.card-text {
-  font-size: $smallFontSize;
-}
-.hovereffect {
+.course-card {
   width: 100%;
-  height: 100%;
-  float: left;
-  overflow: hidden;
-  position: relative;
-}
-.back {
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)),
-    url('https://static.tildacdn.com/tild6432-6361-4433-a233-366431333938/top622259.jpg');
-}
+  margin-bottom: 24px;
+  margin-inline: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 
-.card-height {
-  max-height: rem(350);
-}
-
-.card-height-test {
-  max-height: rem(350);
-}
-
-.line {
-  position: absolute;
-  bottom: -19px;
-  border: 0;
-  height: 2px;
-  width: 0%;
-  left: 50%;
-}
-.line-2 {
-  position: absolute;
-  bottom: -19px;
-  border: 0;
-  height: 5px;
-  width: 0%;
-  left: 50%;
-}
-.shadow-effect {
-  -ms-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-.show-about {
-  display: none;
-}
-
-.card-height:hover,
-.card-height-list:hover {
-  .shadow-effect {
-    box-shadow: 0px 0px 20px -10px rgba(95, 160, 168, 0.3);
-    -ms-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-  }
-  .line-2 {
-    width: 100%;
-    display: inline-block;
-    -webkit-transition: width 0.3s ease-in-out;
-    -moz--transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    transform: translateX(-50%);
-    box-shadow: 0px 0px 20px 1px rgba(95, 160, 168, 0.5);
-  }
-  .line {
-    width: 91%;
-    display: inline-block;
-    -webkit-transition: width 0.3s ease-in-out;
-    -moz--transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    transform: translateX(-50%);
-    box-shadow: 0px 0px 20px 1px rgba(95, 160, 168, 0.5);
+  &__container {
+    background-color: #fff;
+    border-radius: 5px;
+    height: 100%;
   }
 
-  .show-about {
-    display: block;
-    -webkit-animation: fadeInUp 0.3s;
-    animation: fadeInUp 0.3s;
+  &__link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  .img_org_logo {
-    -webkit-animation: pulse 0.3s;
-    animation: pulse 0.3s;
+  &__image {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 0 0;
+  }
+
+  &__content {
+    padding: 16px;
+  }
+
+  &__university {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 8px 0;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 400; // Изменено с 600 на 400 (normal)
+    margin: 0 0 12px 0;
+    color: #222;
+  }
+
+  &__date {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+  }
+
+  &__icon {
+    margin-right: 6px;
+  }
+}
+
+.u-card {
+  border-radius: 0 0 5px 5px !important;
+  &:hover {
+    border-radius: 0 0 5px 5px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .course-card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .course-card {
+    width: 33.333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .course-card {
+    width: 23%;
   }
 }

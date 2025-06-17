@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchAboutProgram, fetchAboutProgramList, fetchEnrollProgram } from '../store/programs/action';
+import {
+  fetchAboutProgram,
+  fetchAboutProgramList,
+  fetchEnrollProgram,
+} from '../store/programs/action';
 import 'animate.css/animate.min.css';
 import AboutRender from '../containers/AboutRender';
 import CourseListRender from '../containers/CourseListRender';
@@ -33,7 +37,15 @@ class ProgramAbout extends Component {
   }
 
   render() {
-    const { data, loading, isAuth, location, data_enroll, loading_card_about, data_card } = this.props;
+    const {
+      data,
+      loading,
+      isAuth,
+      location,
+      data_enroll,
+      loading_card_about,
+      data_card,
+    } = this.props;
     if (loading && loading_card_about) {
       return <Spinner />;
     }
@@ -45,7 +57,7 @@ class ProgramAbout extends Component {
           enrollment_allowed={data.enrollment_allowed}
           image_background={data.image_background}
           height={100}
-          class={'top-txt-container-sub'}
+          className={'top-txt-container-sub'}
           program_slug={this.props.params.program}
           search={location.search}
           isAuth={isAuth}
@@ -55,7 +67,10 @@ class ProgramAbout extends Component {
           <ObjectContent data_content={data.content} />
           <div className="text-custom-dark2 mt-3 p-5 shadow-sm bg-white">
             <h3>Онлайн-модуль</h3>
-            <RenderCourseListProgram data_card={data_card} loading_card_about={loading_card_about} />
+            <RenderCourseListProgram
+              data_card={data_card}
+              loading_card_about={loading_card_about}
+            />
           </div>
         </div>
         <ButtonScrollToTop />
@@ -64,28 +79,23 @@ class ProgramAbout extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.programs.items_about,
   data_card: state.programs.items_card_about,
   loading: state.programs.loading,
   loading_card_about: state.programs.loading_card_about,
   isAuth: state.user.isAuth,
-  data_enroll: state.programs.items_enroll
+  data_enroll: state.programs.items_enroll,
 });
 
 const mapDispatchToProps = {
   fetchAboutProgram,
   fetchAboutProgramList,
   fetchEnrollProgram,
-  fetchUserState
+  fetchUserState,
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProgramAbout)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProgramAbout));
 
 const NoneCourseProgram = () => (
   <div style={{ height: '300px' }}>
@@ -93,7 +103,7 @@ const NoneCourseProgram = () => (
   </div>
 );
 
-const withEither = (conditionalRenderingFn, EitherComponent) => Component => props =>
+const withEither = (conditionalRenderingFn, EitherComponent) => (Component) => (props) =>
   conditionalRenderingFn(props) ? (
     <>
       <EitherComponent {...props} />
@@ -104,7 +114,7 @@ const withEither = (conditionalRenderingFn, EitherComponent) => Component => pro
     </>
   );
 
-const isViewConditionFn = props => Object.keys(props.data_card).length === 0;
+const isViewConditionFn = (props) => Object.keys(props.data_card).length === 0;
 
 const withEditContionalRendering = withEither(isViewConditionFn, NoneCourseProgram);
 const RenderCourseListProgram = withEditContionalRendering(CourseListRender);

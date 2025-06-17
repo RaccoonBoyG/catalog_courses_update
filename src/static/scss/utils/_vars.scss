@@ -1,12 +1,13 @@
-$mainFont: "Roboto", Arial, sans-serif;
+$mainFont: 'Roboto', Arial, sans-serif;
 
-// Size
+// Font settings
 $mainFontColor: #101010;
 $mainFontSize: 16px;
 $smallFontSize: 14px;
 $mainFontWeight: 400;
 $mainLineHeight: 1.4;
 
+// Breakpoints
 $lgDesktopWidth: 2560px;
 $desktopWidth: 1280px;
 $smDesktopWidth: 980px;
@@ -14,52 +15,61 @@ $tableWidth: 768px;
 $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
-// Main color
+// Color scheme
 $default-color: #fff;
-$primary-color: #7fd5e0;
-$primary-color-dark: #406b70;
+$primary-color: #1e4391; // renamed from blue
+$primary-color-dark: #0f3075;
+$primary-color-dark-2: #041e57;
+$secondary-color: #ef302b; // renamed from red
+$secondary-color-dark: #c0231f;
+$secondary-color-dark-2: #a00b08;
+$gray-color: #898989;
+$gray-color-dark: #747474;
+$gray-color-dark-2: #5d5d5d;
+
+// Additional semantic colors (keeping old usage where needed)
 $success-color: #26de81;
-$danger-color: #fc5c65;
+$danger-color: $secondary-color;
 $warning-color: #fed330;
 $light-color: #999;
 $purple-color: #8854d0;
 $dark-color: #101b1c;
-$navbar-color: rgba(0, 0, 0, .5);
-$dark-color-text: rgba(0, 0, 0, .8);
+$navbar-color: rgba(0, 0, 0, 0.5);
+$dark-color-text: rgba(0, 0, 0, 0.8);
 $dark-color2: #272424;
 
-// Neutral Color
+// Neutral Colors
 $neutral-primary: #303133;
 $neutral-regular: #606266;
 $neutral-secondary: #909399;
 $neutral-placeholder: #c0c4cc;
 
-//Theme color
-$shades-primary: #7fd5e0;
-$shades-regular: #6fbac4;
-$shades-secondary: #5fa0a8;
-$shades-placeholder: #4f858c;
-$shades-low-dark: #406b70;
-$shades-mid-dark: #305054;
+// Theme colors (based on blue palette)
+$shades-primary: $primary-color;
+$shades-regular: #6f88b7;
+$shades-secondary: #5a73a1;
+$shades-placeholder: #4b5e89;
+$shades-low-dark: $primary-color-dark;
+$shades-mid-dark: $primary-color-dark-2;
 $shades-mid-dark-second: #3e5255;
 $shades-hight-dark: #203538;
 $shades-over-dark: #101b1c;
 
-$shades-gradient_1: rgba(0, 169, 196, 1);
-$shades-gradient_2: rgba(57, 177, 197, 0.8715861344537815);
+// Gradients
+$shades-gradient_1: rgba(30, 67, 145, 1);
+$shades-gradient_2: rgba(30, 67, 145, 0.8);
+$shades-gradient_3: #1e4391;
+$shades-gradient_4: #0f3075;
 
-$shades-gradient_3: #00a9c4;
-$shades-gradient_4: #0088d6;
-
-// Border Color
+// Borders
 $border-base: #dcdfe6;
 $border-light: #e4e7ed;
 $border-lighter: #ebeef5;
 $border-lightex: #f2f6fc;
 
-//Card Item Color
-
+// Card colors
 $color_1: black;
 $color_2: #fff;
 $background_color_1: #ededed99;
 $background_color_2: transparent;
+$text-color: black;

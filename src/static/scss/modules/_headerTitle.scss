@@ -6,19 +6,25 @@
     font-weight: 300;
     line-height: 1;
     margin: 0;
+    font-size: rem(36);
+  }
+
+  @include phone {
+    h1 {
+      font-size: rem(24);
+    }
   }
 }
 
-.top-txt-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
+.top-txt-container,
 .top-txt-container-sub {
   align-items: center;
   display: flex;
   justify-content: center;
   position: relative;
+
+  @include phone {
+    flex-direction: column;
+    text-align: center;
+  }
 }
