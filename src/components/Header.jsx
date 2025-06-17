@@ -206,25 +206,25 @@ class Header extends Component {
               </div>
             </div>
 
-            {(this.props.location.pathname.startsWith('/orgs/') ||
+            {/* {(this.props.location.pathname.startsWith('/orgs/') ||
               this.props.location.pathname.match(/^\/\d+/)) && (
               <MobileButtonBack navigate={this.props.navigate} />
-            )}
+            )} */}
 
-            {showComponentMenu && (
+            {/* {showComponentMenu && (
               <MobileMenu
                 isAuth={isAuth}
                 onButtonClickMenuItem={this._onButtonClickMenuItem}
               />
-            )}
-            {showComponentFilter && this.props.location.pathname === '/' && (
+            )} */}
+            {/* {showComponentFilter && this.props.location.pathname === '/' && (
               <MobileFilter
                 _handleTextChange={this._handleTextChange}
                 submitSearch={this.submitSearch}
                 resetInput={this.resetInput}
                 term={term}
               />
-            )}
+            )} */}
           </div>
         </div>
 

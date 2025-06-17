@@ -10,7 +10,7 @@
 @import './scss/modules/cardItemOrg';
 @import './scss/modules/buttonUp';
 @import './scss/modules/mobileFilter';
-@import './scss/modules/mobileMenu';
+// @import './scss/modules/mobileMenu';
 @import './scss/modules/searchInput';
 @import './scss/modules/courseAbout';
 
@@ -145,14 +145,7 @@ html {
     .top-txt-container-sub {
       min-height: rem(330);
     }
-    .custom-profile-img,
-    .mobile-action,
-    .navbar,
-    .filter_pc,
-    .search_pc,
-    .buttonBackPC {
-      display: none !important;
-    }
+
     .p-custom {
       padding-left: 1.5rem !important;
       padding-right: 1.5rem !important;
