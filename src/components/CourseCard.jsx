@@ -39,14 +39,9 @@ class CourseCard extends Component {
               }}
             ></div>
 
-            <div className="u-card umx2">
-              <p className="bt">
-                <FontAwesomeIcon icon={faGraduationCap} className="course-card__icon" />{' '}
-                УрФУ
-              </p>
+            <div className="u-card">
               <h4 className="">{this.truncate(name, 6)}</h4>
               <p className="bt">Начало: {start_display}</p>
-              <button class="u-card-action"></button>
             </div>
           </Link>
         </div>

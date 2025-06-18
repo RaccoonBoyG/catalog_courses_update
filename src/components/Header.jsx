@@ -151,16 +151,13 @@ class Header extends Component {
     } = this.state;
     return (
       <React.Fragment>
-        <div className="container-fluid mt-2">
-          <nav className="navbar navbar-expand-lg navbar-light container pl-0 pr-0">
-            <NavLink className="navbar-brand" to="/">
+        <div className="container mt-2">
+          <nav className="navu">
+            <NavLink to="/">
               <div class="logo"></div>
             </NavLink>
 
-            <div
-              className="collapse navbar-collapse justify-content-md-center"
-              id="navbarSupportedContent"
-            >
+            <div className="justify-content-md-center" id="navbarSupportedContent">
               <ul className="navbar-nav navigate is-show">
                 <li className="nav-item">
                   <NavLink to="/" className="nav-link">

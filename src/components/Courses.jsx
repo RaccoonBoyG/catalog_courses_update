@@ -43,18 +43,26 @@ class Courses extends Component {
     this.props.resetSearch();
   };
 
+  _noVisibleDIV = (num) => {
+    let arr = [];
+    for (let i = 0; i < num; i++) {
+      arr.push(<div className="course-card-none"></div>);
+    }
+    return arr;
+  };
+
   render() {
     const { data, filter_data, loading } = this.props;
     const { searchText } = this.state;
 
     return (
       <>
-        <div className="container pt-5 pb-3 mb-3 p-0 search_pc">
-          <div className="t-site-search-input">
+        <div className="container pt-5 pb-3 mb-3 search_pc">
+          <div className="">
             <div className="t838__blockinput">
               <input
                 type="text"
-                className="form-control search-slt t-input"
+                className=" t-input"
                 placeholder="Введите название курса"
                 onChange={this._handleTextChange}
                 value={searchText}
@@ -77,7 +85,7 @@ class Courses extends Component {
         </div>
 
         <div className="container pb-3 mb-3 p-0 margin-custom-catalog_1">
-          {!loading && filter_data.length !== 0 && (
+          {/* {!loading && filter_data.length !== 0 && (
             <div className="d-flex flex-row justify-content-between">
               <h3 className="text-custom-dark mb-3 pl-3">
                 {num2str(filter_data.length, ['Найден ', 'Найдено ', 'Найдено '])}
@@ -85,10 +93,10 @@ class Courses extends Component {
                 {num2str(filter_data.length, [' курс ', ' курса ', ' курсов '])}
               </h3>
             </div>
-          )}
+          )} */}
 
           <div className="flex-row">
-            <div className="d-flex flex-wrap flex-row">
+            <div className="d-flex flex-wrap flex-row justify-content-between">
               {loading && data.length === 0 ? (
                 <div
                   className="d-flex flex-column justify-content-center align-items-center"
@@ -121,11 +129,12 @@ class Courses extends Component {
                   className="text-custom-dark d-flex flex-row justify-content-center align-items-center"
                   style={{ width: '100%', height: '350px' }}
                 >
-                  Ничего не найдено :(
+                  Ничего не найдено
                 </h3>
               ) : (
                 data.map((item, key) => <CourseCard value={item} key={key} />)
               )}
+              {this._noVisibleDIV(data.length % 4)}
             </div>
           </div>
 

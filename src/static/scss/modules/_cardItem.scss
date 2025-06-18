@@ -1,9 +1,14 @@
 .course-card {
   width: 100%;
-  margin-bottom: 24px;
-  margin-inline: 10px;
+  margin-bottom: 27px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 2px solid white;
+
+  &:hover {
+    z-index: 999;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+  }
 
   &__container {
     background-color: #fff;
@@ -24,7 +29,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
   }
 
   &__content {
@@ -56,26 +61,33 @@
 }
 
 .u-card {
-  border-radius: 0 0 5px 5px !important;
+  border-radius: 0 0 10px 10px !important;
+  background-image: none !important;
+  min-height: 130px !important;
+  padding: 20px 20px !important;
   &:hover {
-    border-radius: 0 0 5px 5px !important;
+    color: $primary-color !important;
+    background-color: #fff !important;
   }
 }
 
 @media (min-width: 768px) {
-  .course-card {
+  .course-card,
+  .course-card-none {
     width: 45%;
   }
 }
 
 @media (min-width: 992px) {
-  .course-card {
+  .course-card,
+  .course-card-none {
     width: 30%;
   }
 }
 
 @media (min-width: 1200px) {
-  .course-card {
+  .course-card,
+  .course-card-none {
     width: 23%;
   }
 }

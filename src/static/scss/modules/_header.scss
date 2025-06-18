@@ -25,10 +25,6 @@
   left: rem(-30);
 }
 
-.nav-item {
-  padding-right: 0.5rem;
-}
-
 @include phone {
   .brand_img {
     width: rem(36);
@@ -50,4 +46,24 @@
   mask-image: url('/static/img/logo-urfu-white.svg');
   mask-repeat: no-repeat;
   mask-size: contain;
+}
+
+.navu {
+  display: flex;
+  flex-direction: row;
+  color: $primary-color;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+
+  .navigate {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .nav-item {
+      margin-inline: 10px;
+    }
+  }
 }

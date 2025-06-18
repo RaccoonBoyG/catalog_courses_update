@@ -1,11 +1,3 @@
-.t-site-search-input {
-  display: block; // изменено с table, чтобы проще управлять flex
-  width: 100%;
-  position: relative;
-  max-width: 500px; // ограничение максимальной ширины
-  margin: 0 auto; // центрирование по горизонтали
-}
-
 .t838__blockinput {
   display: flex; // меняем с table-cell на flex для выравнивания инпута и крестика
   align-items: center;
@@ -13,10 +5,10 @@
   width: 100%;
   position: relative;
   background: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid $primary-color;
   border-radius: 35px;
-  padding: 0 10px;
   box-sizing: border-box;
+  padding: 0 20px;
 }
 
 .t-input {
@@ -24,8 +16,6 @@
   border: none;
   height: 100%;
   font-size: 1rem;
-  padding-left: 15px;
-  padding-right: 0; // padding-right убираем, теперь крестик занимает место справа без перекрытия
   border-radius: 35px;
   outline: none;
 
@@ -44,7 +34,7 @@
   height: 1.5rem;
   cursor: pointer;
   position: relative; // убираем абсолютное позиционирование, чтобы не растягивался
-  margin-left: 10px; // отступ слева от инпута
+
   display: none;
   flex-shrink: 0; // фиксируем размер и не даём сжиматься
 
