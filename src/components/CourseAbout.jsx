@@ -82,23 +82,23 @@ const CourseAbout = () => {
   return (
     <>
       <div className="container umt64">
-        <div className="d-flex row">
-          <PromoPlayer
-            course_video_uri={data.course_video_uri}
-            course_image_uri={data.course_image_uri}
-            promo_image={data.promo_image}
-            course_title={data.name}
-          />
-          <div className="d-flex col justify-content-end">
+        <div className="course-top-container">
+          <div className="promo-container">
+            <PromoPlayer
+              course_video_uri={data.course_video_uri}
+              course_image_uri={data.course_image_uri}
+              promo_image={data.promo_image}
+              course_title={data.name}
+            />
+          </div>
+
+          <div className="about-render-container">
             <AboutRender
               name={data.name}
               invitation_only={data.invitation_only}
-              className={'top-txt-container-sub'}
-              height={100}
               isAuth={isAuth}
               course_enroll_user={course_enroll_user}
               params={{ id }}
-              search={window.location.search}
               modes_data={modes_data}
               changeEnroll={changeEnroll}
               isEnrolling={isEnrolling}
@@ -132,24 +132,21 @@ const PromoPlayer = ({
   return (
     <>
       {course_video_uri ? (
-        <div className="col rounded shadow-sm">
-          <Player
-            autoPlay={false}
-            playsInline
-            preload={'metadata'}
-            poster={imageSrc}
-            src={course_video_uri}
-          >
-            <BigPlayButton position="center" />
-            <ControlBar autoHide={false} disableDefaultControls={false}>
-              <PlayToggle />
-            </ControlBar>
-          </Player>
-        </div>
+        <Player
+          autoPlay={false}
+          playsInline
+          preload={'metadata'}
+          poster={imageSrc}
+          src={course_video_uri}
+          className="rounded shadow-sm"
+        >
+          <BigPlayButton position="center" />
+          <ControlBar autoHide={false} disableDefaultControls={false}>
+            <PlayToggle />
+          </ControlBar>
+        </Player>
       ) : (
-        <div className="d-flex col rounded shadow-sm">
-          <img src={imageSrc} alt={course_title} className="img-fluid" />
-        </div>
+        <img src={imageSrc} alt={course_title} className="img-fluid rounded shadow-sm" />
       )}
     </>
   );

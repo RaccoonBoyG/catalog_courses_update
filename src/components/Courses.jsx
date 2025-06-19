@@ -57,10 +57,27 @@ class Courses extends Component {
 
     return (
       <>
-        <div className="container pt-5 pb-3 mb-3 search_pc">
+        <div className="container mt-5 mb-4 search_pc">
           <div className="">
             <div className="t838__blockinput">
-              <input
+              <div className="u-search">
+                <input
+                  placeholder="Введите название"
+                  className="u-input"
+                  type="search"
+                  name=""
+                  id=""
+                  onChange={this._handleTextChange}
+                  value={searchText}
+                  autoComplete="off"
+                />
+                <button
+                  className="u-search-loupe"
+                  type="button"
+                  onClick={this._resetSearchResult}
+                ></button>
+              </div>
+              {/* <input
                 type="text"
                 className=" t-input"
                 placeholder="Введите название курса"
@@ -79,12 +96,12 @@ class Courses extends Component {
                 >
                   <path d="M99.6 97.4L52.1 49.9 99.3 2.6c0.6-0.6 0.6-1.5 0-2.1 -0.6-0.6-1.5-0.6-2.1 0L50 47.8 2.7 0.5c-0.6-0.6-1.5-0.6-2.1 0 -0.6 0.6-0.6 1.5 0 2.1l47.3 47.3L0.4 97.4c-0.6 0.6-0.6 1.5 0 2.1 0.3 0.3 0.7 0.4 1 0.4s0.7-0.1 1-0.4l47.5-47.5 47.5 47.5c0.3 0.3 0.7 0.4 1 0.4s0.7-0.1 1-0.4C100.1 98.9 100.1 98 99.6 97.4z" />
                 </svg>
-              )}
+              )} */}
             </div>
           </div>
         </div>
 
-        <div className="container pb-3 mb-3 p-0 margin-custom-catalog_1">
+        <div className="container pb-3 mb-3 margin-custom-catalog_1">
           {/* {!loading && filter_data.length !== 0 && (
             <div className="d-flex flex-row justify-content-between">
               <h3 className="text-custom-dark mb-3 pl-3">
@@ -102,18 +119,18 @@ class Courses extends Component {
                   className="d-flex flex-column justify-content-center align-items-center"
                   style={{ width: '100%', height: '350px' }}
                 >
-                  <div class="u-preloader-mini">
+                  <div className="u-preloader-mini">
                     <svg
-                      class="u-preloader-mini-container"
+                      className="u-preloader-mini-container"
                       width="48"
                       height="48"
                       viewBox="0 0 48 48"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <circle cx="24" cy="24" r="23" stroke="#1E4391" stroke-width="2" />
+                      <circle cx="24" cy="24" r="23" stroke="#1E4391" strokeWidth="2" />
                       <circle
-                        class="u-preloader-mini-dot"
+                        className="u-preloader-mini-dot"
                         cx="6.5"
                         cy="6.5"
                         r="6.5"

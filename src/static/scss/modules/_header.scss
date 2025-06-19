@@ -1,69 +1,141 @@
-.brand_img {
-  fill: $primary-color;
-  width: rem(45);
-}
-
-.navbar-brand {
-  display: -webkit-inline-box;
-  padding-top: 0.3rem;
-  margin-right: 0;
-}
-
-.navbar_text_small {
-  font-size: rem(12);
-}
-
-.bg_img {
-  width: 100%;
-  background-size: cover;
-  position: absolute;
-  background-attachment: fixed;
-  z-index: -99999;
-}
-
-.dropdown-menu {
-  left: rem(-30);
-}
-
-@include phone {
-  .brand_img {
-    width: rem(36);
-  }
-  .navbar_text_small {
-    font-size: rem(10);
-  }
-  .dropdown-menu {
-    left: rem(-10);
-  }
-  .nav-item {
-    padding-right: 0.25rem;
-  }
-}
-.logo {
-  width: 110px;
-  height: 40px;
-  background-color: $primary-color; /* Цвет, которым будет "закрашен" логотип */
-  mask-image: url('/static/img/logo-urfu-white.svg');
-  mask-repeat: no-repeat;
-  mask-size: contain;
-}
-
+// Основные стили навигации
 .navu {
   display: flex;
   flex-direction: row;
-  color: $primary-color;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
-  margin-left: calc(var(--bs-gutter-x) * -0.5);
-  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  padding: 10px 0;
+  gap: 20px;
 
   .navigate {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    .nav-item {
-      margin-inline: 10px;
+    align-items: right;
+    gap: 20px;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+  .nav-item {
+    color: $primary-color;
+  }
+
+  // Стили для кнопки входа
+  .login-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    .u-button {
+      display: flex;
+      align-items: center;
+      border: none;
+      background: $primary-color;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      h4 {
+        margin: 0;
+        font-weight: 400;
+      }
+      svg {
+        font-size: 1.5rem;
+      }
     }
+
+    // Стили для мобильных устройств
+    @include phone {
+      .u-button {
+        justify-content: center;
+        padding: 0 25px;
+        h4 {
+          display: none;
+        }
+
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    // Стили для мобильных устройств
+    @include sm-phone {
+      .u-button {
+        justify-content: center;
+        padding: 0 16px;
+
+        h4 {
+          display: none;
+        }
+
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    @include xs-phone {
+      .u-button {
+        justify-content: center;
+        padding: 0 16px;
+
+        h4 {
+          display: none;
+        }
+
+        svg {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+// Логотип
+.logo {
+  // Базовые стили
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  background-color: $primary-color;
+  transition: all 0.3s ease;
+
+  // Дефолтное лого для самых больших экранов
+  @include lg-desktop {
+    width: 130px;
+    height: 45px;
+    mask-image: url('/static/img/logo-urfu-white.svg');
+  }
+
+  // Десктоп
+  @include desktop {
+    width: 120px;
+    height: 42px;
+    mask-image: url('/static/img/logo-urfu-white.svg');
+  }
+
+  // Планшеты
+  @include tablet {
+    width: 110px;
+    height: 40px;
+    mask-image: url('/static/img/logo-urfu-white.svg');
+  }
+
+  // Телефоны
+  @include phone {
+    width: 100px;
+    height: 35px;
+    mask-image: url('//openedu.urfu.ru/files/courses_catalog/UrFULogo1.svg');
+  }
+
+  // Маленькие телефоны
+  @include sm-phone {
+    width: 90px;
+    height: 32px;
+    mask-image: url('//openedu.urfu.ru/files/courses_catalog/UrFULogo1.svg');
+  }
+
+  // Очень маленькие телефоны
+  @include xs-phone {
+    width: 80px;
+    height: 30px;
+    mask-image: url('//openedu.urfu.ru/files/courses_catalog/UrFULogo1.svg');
   }
 }

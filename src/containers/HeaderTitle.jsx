@@ -1,27 +1,29 @@
-// HeaderTitle.jsx
 import React from 'react';
 import { MEDIA_LS_URL } from '../services/openurfu';
 
 const HeaderTitle = (props) => {
   return (
-    <div className="d-flex row justify-content-between">
-      <div className="d-flex justify-content-end">
-        <h2 className="course-title clr-blue-main">{props.name}</h2>
+    <div className="course-header-container">
+      <div className="course-header-content">
+        <div className="course-title-container">
+          <h2 className="course-title clr-blue-main">{props.name}</h2>
+          <div className="course-meta text-dark">
+            <p>{props.data.start_display}</p>
+          </div>
+        </div>
+
+        {props.description && <HeaderDescription desc={props.description} />}
+
+        <div className="action-buttons">
+          <ButtonEnrollRead {...props} />
+        </div>
       </div>
-      <div className="d-flex justify-content-end text-dark">
-        <p className="">{props.data.start_display}</p>
-        {/* <p className="">{props.data}</p> */}
-      </div>
-      <div className="d-flex justify-content-end action-buttons align-items-end">
-        <ButtonEnrollRead {...props} />
-      </div>
-      {props.description && <HeaderDescription desc={props.description} />}
     </div>
   );
 };
 
 const HeaderDescription = ({ desc }) => (
-  <div className="course-description mt-4">
+  <div className="course-description">
     <p>{desc}</p>
   </div>
 );
@@ -30,7 +32,7 @@ const ButtonEnroll = ({ isAuth, changeEnroll, invitation_only, isEnrolling }) =>
   if (!isAuth) {
     return (
       <a href={`${MEDIA_LS_URL}/login`} className="uhov u-button bg-pink">
-        <p className="">Записаться на курс</p>
+        <h4 className="u-fw-400">Записаться на курс</h4>
       </a>
     );
   }

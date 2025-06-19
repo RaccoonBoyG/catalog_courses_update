@@ -20,6 +20,20 @@ html {
   height: 100%;
   line-height: $mainLineHeight;
 
+  .container {
+    --bs-gutter-x: 4.5rem;
+  }
+
+  .question-text {
+    h2,
+    h3,
+    h4 {
+      font-weight: 300 !important;
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+  }
+
   @include lg-desktop {
     font-size: 18px;
     .bg_img {
@@ -77,6 +91,11 @@ html {
     }
     .teacher {
       @include teacher-style;
+
+      // Добавляем адаптацию для мобильных
+      @media (max-width: 768px) {
+        @include teacher-style-mobile;
+      }
     }
   }
 
@@ -131,6 +150,10 @@ html {
     }
     .teacher {
       @include teacher-style;
+
+      @media (max-width: 768px) {
+        @include teacher-style-mobile;
+      }
     }
   }
 
@@ -177,6 +200,10 @@ html {
     }
     .teacher {
       @include teacher-style;
+
+      @media (max-width: 768px) {
+        @include teacher-style-mobile;
+      }
     }
   }
 
@@ -226,16 +253,28 @@ html {
     padding: 0;
     color: $default-color;
 
-    h2 {
-      font-size: 2rem;
-      font-weight: 300 !important;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      margin-top: 2rem;
-    }
-    .course-staff h3 {
-      font-size: 1.5rem !important;
-      font-weight: 300 !important;
+    // Обновленные стили для секции преподавателей
+    .course-staff {
+      max-width: 1200px;
+      display: grid;
+      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+
+      h2 {
+        text-align: left;
+        grid-column: 1 / -1;
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .teacher {
+        @include teacher-style;
+      }
     }
   }
 

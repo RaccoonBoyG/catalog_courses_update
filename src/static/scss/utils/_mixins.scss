@@ -37,31 +37,37 @@
 }
 
 @mixin desktop {
-  @media only screen and (min-width: $desktopWidth) and (max-width: $lgDesktopWidth) {
+  @media only screen and (min-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin sm-desktop {
+  @media only screen and (min-width: $smDesktopWidth) and (max-width: $desktopWidth - 1) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media only screen and (min-width: $tableWidth) and (max-width: $desktopWidth) {
+  @media only screen and (min-width: $tableWidth) and (max-width: $smDesktopWidth - 1) {
     @content;
   }
 }
 
 @mixin phone {
-  @media only screen and (min-width: $phoneWidth) and (max-width: $tableWidth) {
+  @media only screen and (min-width: $phoneWidth) and (max-width: $tableWidth - 1) {
     @content;
   }
 }
 
 @mixin sm-phone {
-  @media only screen and (min-width: $smPhoneWidth) and (max-width: $phoneWidth) {
+  @media only screen and (min-width: $smPhoneWidth) and (max-width: $phoneWidth - 1) {
     @content;
   }
 }
 
 @mixin xs-phone {
-  @media only screen and (max-width: $smPhoneWidth) {
+  @media only screen and (max-width: $smPhoneWidth - 1) {
     @content;
   }
 }
@@ -83,22 +89,68 @@
 }
 
 @mixin teacher-style {
-  height: 100%;
-  margin: rem(20);
-
-  h3 {
-    padding-top: rem(20);
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
 
   .teacher-image {
-    max-height: rem(100);
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-bottom: 1rem;
+
+    img {
+      @include teacher-image-style(120px);
+    }
   }
 
-  .teacher-image img {
-    margin-right: 2rem;
-    max-height: rem(150);
-    max-width: rem(150);
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
   }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    text-align: left;
+  }
+}
+// Миксин для мобильной версии
+@mixin teacher-style-mobile {
+  padding: 1.25rem;
+
+  .teacher-image img {
+    @include teacher-image-style(120px);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+// Миксин для изображений преподавателей
+@mixin teacher-image-style($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f8f9fa;
 }
 
 @mixin img-about-size($size) {
