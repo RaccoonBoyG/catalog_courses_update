@@ -112,13 +112,16 @@ class Header extends Component {
             <div className="justify-content-md-center" id="navbarSupportedContent">
               <ul className="navbar-nav navigate">
                 <li className="nav-item">
-                  <NavLink to="/help" className="nav-link">
+                  {/* <NavLink to="/help" className="nav-link">
                     Задать вопрос
-                  </NavLink>
+                  </NavLink> */}
                 </li>
                 {isAuth && <MyCourses />}
               </ul>
             </div>
+            <NavLink to="/help" className="u-button u-button-outline login-button">
+              <h4 className="u-fw-400">Задать вопрос</h4>
+            </NavLink>
 
             {isAuth ? <RenderProfileYes /> : <RenderProfileNo />}
           </nav>

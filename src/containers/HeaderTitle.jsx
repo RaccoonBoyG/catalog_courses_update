@@ -6,7 +6,7 @@ const HeaderTitle = (props) => {
     <div className="course-header-container">
       <div className="course-header-content">
         <div className="course-title-container">
-          <h2 className="course-title clr-blue-main">{props.name}</h2>
+          <h3 className="course-title clr-blue-main">{props.name}</h3>
           <div className="course-meta text-dark">
             <p>{props.data.start_display}</p>
           </div>

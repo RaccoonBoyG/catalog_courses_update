@@ -78,6 +78,8 @@
 
 .course-header-container {
   margin-top: 0;
+  height: 100%;
+  display: flex;
 
   @include phone {
     margin-top: 1rem;
@@ -96,6 +98,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: space-between;
 
   .course-meta,
   .course-title {
@@ -126,27 +129,26 @@
   .course-title {
     @include tablet {
       flex-direction: column;
-      align-items: flex-end;
-      text-align: left;
+      text-align: right;
     }
   }
   .course-meta,
   .course-title {
     // Для телефонов
     @include phone {
-      text-align: left;
+      text-align: center;
     }
   }
   .course-meta,
   .course-title {
     @include sm-phone {
-      text-align: left;
+      text-align: center;
     }
   }
   .course-meta,
   .course-title {
     @include xs-phone {
-      text-align: left;
+      text-align: center;
     }
   }
 }
@@ -158,8 +160,47 @@
 
 .action-buttons {
   margin-top: 1rem;
-  text-align: right;
-  align-self: flex-end;
+
+  .u-button {
+    padding: 0 31px !important;
+  }
+  @include lg-desktop {
+    align-items: right;
+    text-align: right;
+  }
+
+  @include desktop {
+    align-items: right;
+    text-align: right;
+  }
+
+  @include sm-desktop {
+    align-items: right;
+    text-align: right;
+  }
+
+  @include tablet {
+    align-items: right;
+    text-align: right;
+  }
+
+  @include phone {
+    margin-top: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  @include sm-phone {
+    margin-top: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  @include xs-phone {
+    margin-top: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .course-description {

@@ -256,12 +256,13 @@ html {
     // Обновленные стили для секции преподавателей
     .course-staff {
       max-width: 1200px;
-      display: grid;
+      display: grid !important;
       margin-bottom: 2rem;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
       gap: 1.2rem;
 
-      h2 {
+      h2,
+      h3 {
         text-align: left;
         grid-column: 1 / -1;
       }
