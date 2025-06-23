@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react';
-import { connect } from 'react-redux';
-// import { fetchPrograms, fetchAboutProgram } from '../store/programs/action';
-import { fetchProjects } from '../store/projects/action';
-import { fetchPrograms, fetchAboutProgram } from '../store/programs/action';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { fetchProjects } from '../store/projects/projectsSlice';
+import { fetchPrograms, fetchAboutProgram } from '../store/programs/programsSlice';
 import 'animate.css/animate.min.css';
 import withRouter from '../utils/withRouter';
 
@@ -16,104 +15,107 @@ import { ArrayContent } from '../containers/Content';
 import Spinner from '../containers/Spinner';
 import Courses from "./Courses";
 
-class ProjectsAbout extends Component {
-  constructor(props) {
-    super(props);
+const ProjectsAbout = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  
+  const { loading, data, data_programs, loading_programs } = useSelector(state => ({
+    data: state.projects.items,
+    loading: state.projects.loading,
+    data_programs: state.programs.items,
+    loading_programs: state.programs.loading
+  }));
 
-    this.postIdAPI = this.postIdAPI.bind(this);
-  }
+  const currentProjectSlug = location.pathname.replace('/projects/', '');
 
-  async componentDidMount() {
-    await this.props.fetchPrograms();
-    await this.props.fetchProjects();
-    scroll();
-  }
+  useEffect(() => {
+    const loadData = async () => {
+      await dispatch(fetchPrograms());
+      await dispatch(fetchProjects());
+      scroll();
+    };
+    
+    loadData();
+  }, [dispatch]);
 
-  postIdAPI(id) {
-    this.props.fetchAboutProgram(id);
-  }
-
-  render() {
-    const { loading, data, data_programs, loading_programs } = this.props;
-    if (loading && loading_programs) {
-      return <Spinner />;
-    }
-   data.map(i => {
-    if (i.slug_project === this.props.location.pathname.replace('/projects/', '')){
-      if (i.hide_menu) {
-        let menu = document.getElementsByClassName('navbar');
-        menu[0].setAttribute("style", "display:none;")
-      }
-      else {
-        let menu = document.getElementsByClassName('navbar');
-        menu[0].setAttribute("style", "display:flex;")
-      }
-    }
-   })
-    return (
-      <>
-        {data.map(item => {
-          if (item.slug_project === this.props.location.pathname.replace('/projects/', '')) {
-            return (
-              <React.Fragment key={item.name + item.slug_project}>
-                <div className="d-flex flex-row backImgCourse margin-custom-catalog">
-                  <div className={`container container-course_about p-custom-2 pb-4 pl-2 d-flex flex-column text-light animated fadeIn faster mb-3`}>
-                    <div className=" d-flex title_catalog align-items-start justify-content-start " style={{ textAlign: 'left' }}>
-                      <h2 className="d-flex align-items-start justify-content-start">{item.name}</h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-flex flex-column margin-custom-catalog container">
-                  {item.content.map((i, key) => {
-                    return (
-                      <div className="text-custom-dark2 m-3 p-5 shadow-sm bg-white" key={key} dangerouslySetInnerHTML={{ __html: i.content }}></div>
-                    );
-                  })}
-                  <ArrayContent data_content={data} />
-                  <div className="m-3 d-flex flex-wrap flex-row">
-                    {data_programs.map(item => {
-                      return item.project_slug === this.props.location.pathname.replace('/projects/', '') ? (
-                        <ListCard
-                          key={item.name + item.slug_program}
-                          name={item.name}
-                          slug={item.slug_program}
-                          logo={item.logo}
-                          image_background={item.image_background}
-                          url={this.props.location}
-                          edu_start_date={item.edu_start_date}
-                          edu_end_date={item.edu_end_date}
-                          handleClick={this.postIdAPI}
-                        />
-                      ) : null;
-                    })}
-                  </div>
-                </div>
-              </React.Fragment>
-            );
-          } else return null;
-        })}
-        <ButtonScrollToTop />
-      </>
+  // Handle menu visibility based on project settings
+  useEffect(() => {
+    const currentProject = data.find(project => 
+      project.slug_project === currentProjectSlug
     );
+    
+    if (currentProject) {
+      const menu = document.getElementsByClassName('navbar');
+      if (menu[0]) {
+        menu[0].setAttribute(
+          "style", 
+          currentProject.hide_menu ? "display:none;" : "display:flex;"
+        );
+      }
+    }
+  }, [data, currentProjectSlug]);
+
+  const postIdAPI = useCallback((id) => {
+    dispatch(fetchAboutProgram(id));
+  }, [dispatch]);
+
+  if (loading && loading_programs) {
+    return <Spinner />;
   }
-}
 
-const mapStateToProps = state => ({
-  data: state.projects.items,
-  loading: state.projects.loading,
-  data_programs: state.programs.items,
-  loading_programs: state.programs.loading
-});
+  const currentProject = data.find(item => 
+    item.slug_project === currentProjectSlug
+  );
 
-const mapDispatchToProps = {
-  fetchProjects,
-  fetchPrograms,
-  fetchAboutProgram
+  if (!currentProject) {
+    return null;
+  }
+
+  const relatedPrograms = data_programs.filter(program => 
+    program.project_slug === currentProjectSlug
+  );
+
+  return (
+    <>
+      <div className="d-flex flex-row backImgCourse margin-custom-catalog">
+        <div className={`container container-course_about p-custom-2 pb-4 pl-2 d-flex flex-column text-light animated fadeIn faster mb-3`}>
+          <div className=" d-flex title_catalog align-items-start justify-content-start " style={{ textAlign: 'left' }}>
+            <h2 className="d-flex align-items-start justify-content-start">{currentProject.name}</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div className="d-flex flex-column margin-custom-catalog container">
+        {currentProject.content.map((contentItem, key) => (
+          <div 
+            className="text-custom-dark2 m-3 p-5 shadow-sm bg-white" 
+            key={key} 
+            dangerouslySetInnerHTML={{ __html: contentItem.content }}
+          />
+        ))}
+        
+        <ArrayContent data_content={data} />
+        
+        <div className="m-3 d-flex flex-wrap flex-row">
+          {relatedPrograms.map(program => (
+            <ListCard
+              key={program.name + program.slug_program}
+              name={program.name}
+              slug={program.slug_program}
+              logo={program.logo}
+              image_background={program.image_background}
+              url={location}
+              edu_start_date={program.edu_start_date}
+              edu_end_date={program.edu_end_date}
+              handleClick={postIdAPI}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <ButtonScrollToTop />
+    </>
+  );
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ProjectsAbout)
-);
+export default ProjectsAbout;

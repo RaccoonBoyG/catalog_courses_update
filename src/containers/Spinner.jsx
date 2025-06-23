@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Spinner = (props) => {
-  const [defaultHeight, setDefaultHeight] = useState('350px');
-  if (props.height) {
-    setDefaultHeight(props.height);
-  }
+const Spinner = ({ height = '350px' }) => {
   return (
     <div
       className="d-flex flex-row justify-content-center align-items-center "
-      style={{ width: '100%', height: defaultHeight }}
+      style={{ width: '100%', height }}
     >
       <div className="u-preloader-mini">
         <svg

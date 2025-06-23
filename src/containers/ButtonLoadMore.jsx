@@ -1,33 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { LoadMoreTest } from "../store/cards/action";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadMoreCards } from "../store/cards/cardsSlice";
 
-class ButtonLoadMore extends Component {
-  render() {
-    const { LoadMoreTest } = this.props;
-    return (
-      <div className="d-flex flex-row justify-content-center p-3 m-3 load-container ">
-        <button
-          className="btn btn-primary loadmore"
-          id="loadmore-btn"
-          onClick={LoadMoreTest}
-        >
-          Показать ещё
-        </button>
-      </div>
-    );
-  }
-}
+const ButtonLoadMore = () => {
+  const dispatch = useDispatch();
+  const buttonState = useSelector(state => state.cards.isHideButton);
 
-const mapStateToProps = state => ({
-  buttonState: state.cards.isHideButton
-});
+  const handleLoadMore = () => {
+    dispatch(loadMoreCards());
+  };
 
-const mapDispatchToProps = {
-  LoadMoreTest
+  return (
+    <div className="d-flex flex-row justify-content-center p-3 m-3 load-container ">
+      <button
+        className="btn btn-primary loadmore"
+        id="loadmore-btn"
+        onClick={handleLoadMore}
+      >
+        Показать ещё
+      </button>
+    </div>
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ButtonLoadMore);
+export default ButtonLoadMore;

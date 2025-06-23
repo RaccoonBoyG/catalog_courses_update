@@ -1,20 +1,16 @@
-import { combineReducers } from "redux";
-import cards from "./cards/reducer";
-import course_about from "./course_about/reducer";
-// import program_about from "./program_about/reducer";
-import programs from "./programs/reducer";
-import projects from "./projects/reducer";
-import organizations from "./organizations/reducer";
-import user from "./user/reducer";
-import { routerReducer } from "react-router-redux";
+import { combineReducers } from "@reduxjs/toolkit";
+import cardsReducer from "./cards/cardsSlice";
+import courseAboutReducer from "./course_about/courseAboutSlice";
+import programsReducer from "./programs/programsSlice";
+import projectsReducer from "./projects/projectsSlice";
+import organizationsReducer from "./organizations/organizationsSlice";
+import userReducer from "./user/userSlice";
 
 export default combineReducers({
-  routing: routerReducer,
-  organizations,
-  programs,
-  projects,
-  cards,
-  course_about,
-  // program_about,
-  user
+  organizations: organizationsReducer,
+  programs: programsReducer,
+  projects: projectsReducer,
+  cards: cardsReducer,
+  course_about: courseAboutReducer,
+  user: userReducer
 });

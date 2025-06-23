@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
 import Projects from './Projects';
 import ProjectsAbout from './ProjectsAbout';
@@ -15,45 +15,42 @@ import Catalog from './Catalog';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import CourseAbout from './CourseAbout';
 import Organization from './Organization';
-import { connect } from 'react-redux';
-import { fetchUserState } from '../store/user/action';
+import { useDispatch } from 'react-redux';
+import { fetchUserState } from '../store/user/userSlice';
 
-class RouterApp extends Component {
-  componentDidMount() {
-    this.props.fetchUserState();
-    // this.props.fetchEnrollState();
-  }
-  render() {
-    return (
-      <main className="App" id="app">
-        <BrowserRouter>
-          <Header />
-          <div>
-            <Routes>
-              <Route path="/" element={<Catalog />} />
-              {/* <Route path="/about" element={<AboutUs />} /> */}
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/tech" element={<Tech />} />
-              <Route path="/404" element={<NotFound />} />
-              <Route path="/orgs/:org" element={<OrganizationAbout />} />
-              <Route path="/orgs" element={<Organization />} />
-              {/* <Route path="/programs/:program" component={ProgramAbout} />
-                <Route path="/programs" component={Programs} /> */}
-              <Route path="/projects/:project/:program" element={<ProgramAbout />} />
-              <Route path="/projects/:project" element={<ProjectsAbout />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/:id" element={<CourseAbout />} />
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
-      </main>
-    );
-  }
-}
+const RouterApp = () => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = {
-  fetchUserState,
+  useEffect(() => {
+    dispatch(fetchUserState());
+    // dispatch(fetchEnrollState());
+  }, [dispatch]);
+
+  return (
+    <main className="App" id="app">
+      <BrowserRouter>
+        <Header />
+        <div>
+          <Routes>
+            <Route path="/" element={<Catalog />} />
+            {/* <Route path="/about" element={<AboutUs />} /> */}
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/tech" element={<Tech />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="/orgs/:org" element={<OrganizationAbout />} />
+            <Route path="/orgs" element={<Organization />} />
+            {/* <Route path="/programs/:program" component={ProgramAbout} />
+              <Route path="/programs" component={Programs} /> */}
+            <Route path="/projects/:project/:program" element={<ProgramAbout />} />
+            <Route path="/projects/:project" element={<ProjectsAbout />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/:id" element={<CourseAbout />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </main>
+  );
 };
 
-export default connect(null, mapDispatchToProps)(RouterApp);
+export default RouterApp;

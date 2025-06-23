@@ -1,22 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import reducer from '../store/reducers';
-import { thunk } from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import RouterApp from './RouterApp';
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
-// const store = createStore(reducer, applyMiddleware(thunk));
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
+      },
+    }),
+  devTools: process.env.NODE_ENV !== 'production',
+});
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <RouterApp />
-      </Provider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Provider store={store}>
+      <RouterApp />
+    </Provider>
+  );
+};
 
 export default App;
