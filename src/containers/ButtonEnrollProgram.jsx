@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import 'animate.css/animate.min.css';
 import { MEDIA_LS_URL } from '../services/openurfu';
-// import $ from 'jquery';
+
 
 const ButtonEnrollProgram = ({ program_slug }) => {
   const isAuth = useSelector(state => state.user.isAuth);

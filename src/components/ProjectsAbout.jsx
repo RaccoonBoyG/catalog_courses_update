@@ -4,16 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { fetchProjects } from '../store/projects/projectsSlice';
 import { fetchPrograms, fetchAboutProgram } from '../store/programs/programsSlice';
 import 'animate.css/animate.min.css';
-import withRouter from '../utils/withRouter';
 
-// import Header from './Header';
-// import ListCard from '../containers/ListCard';
 import scroll from './scroll';
 import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 import ListCard from '../containers/ListCard';
 import { ArrayContent } from '../containers/Content';
 import Spinner from '../containers/Spinner';
-import Courses from "./Courses";
 
 const ProjectsAbout = () => {
   const dispatch = useDispatch();

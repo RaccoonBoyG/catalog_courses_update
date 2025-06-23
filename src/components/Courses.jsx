@@ -2,25 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchCards,
-  LoadMoreTest,
   searchInput,
   resetSearch,
   fetchCardsAll,
 } from '../store/cards/cardsSlice';
 import CourseCard from './CourseCard';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ButtonLoadMore from '../containers/ButtonLoadMore';
-
-const num2str = (n, text_forms) => {
-  n = Math.abs(n) % 100;
-  var n1 = n % 10;
-
-  if (n > 10 && n < 20) return text_forms[2];
-  if (n1 > 1 && n1 < 5) return text_forms[1];
-  if (n1 === 1) return text_forms[0];
-  return text_forms[2];
-};
 
 const Courses = () => {
   const dispatch = useDispatch();

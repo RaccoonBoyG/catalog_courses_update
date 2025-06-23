@@ -4,9 +4,8 @@ import React, { useState, useEffect } from 'react';
 // import ButtonPay from '../containers/ButtonPay';
 // import ButtonEnrollProgram from './ButtonEnrollProgram';
 import { MEDIA_LS_URL } from '../services/openurfu';
-import $ from 'jquery';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchOfferData } from '../store/programs/action';
+import { fetchOfferData } from '../store/programs/programsSlice';
 import Spinner from '../containers/Spinner';
 import Cookies from 'js-cookie';
 
@@ -62,19 +61,21 @@ const HeaderDescription = (props) => (
 // course_id:	`${this.state.value}`,
 // enrollment_action:	`enroll`,
 
-let Modal = (props) => {
+let Modal = ({ showModal, setShowModal, ...props }) => {
   const [button_title, setButtonTitle] = useState('Согласен');
   const [button_style, setButtonStyle] = useState('');
-  // const [buttonText, setButtonText] = React.useState('Согласен')
+  
+  if (!showModal) return null;
+  
   return (
-    <div className="modal fade show" id="ModalPayment" tabIndex="-1" role="dialog" aria-labelledby="ModalPaymentlLabel" aria-hidden="true">
+    <div className="modal fade show" style={{display: 'block'}} id="ModalPayment" tabIndex="-1" role="dialog" aria-labelledby="ModalPaymentlLabel" aria-hidden="true">
       <div className="modal-dialog modal-lg" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h4 className="modal-title" style={{ color: '#000' }}>
               Оферта
             </h4>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => $('#ModalPayment').modal('hide')}>
+            <button type="button" className="close" aria-label="Close" onClick={() => setShowModal(false)}>
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -84,7 +85,7 @@ let Modal = (props) => {
             <div className="modal-body" style={{ color: '#000' }} dangerouslySetInnerHTML={{ __html: props.offer_data.offer_text }}></div>
           )}
           <div className="modal-footer">
-            <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => $('#ModalPayment').modal('hide')}>
+            <button type="button" className="btn btn-default" onClick={() => setShowModal(false)}>
               Отмена
             </button>
             <button
@@ -138,11 +139,7 @@ function isNullCost(cost) {
 }
 
 const ButtonEnrollProgramFalse = (props) => {
-  // const [showModal, setModal] = React.useState(false);
-
-  // const handleCloseModal = () => {
-  //   setModal(false);
-  // };
+  const [showModal, setShowModal] = useState(false);
   const offer_data = useSelector((state) => state.programs.items_offer_data);
   const user_data = useSelector((state) => state.user.items_user);
   const loading_offer = useSelector((state) => state.programs.loading_offer);
@@ -168,9 +165,8 @@ const ButtonEnrollProgramFalse = (props) => {
                   data-toggle="modal"
                   data-target="#ModalPayment"
                   onClick={() => {
-                    // setModal(true);
                     dispatch(fetchOfferData(props.program_slug));
-                    $('#ModalPayment').appendTo('body').modal('show');
+                    setShowModal(true);
                   }}
                 >
                   Оплатить
@@ -200,7 +196,13 @@ const ButtonEnrollProgramFalse = (props) => {
           </p>
         </div>
       </div>
-      <Modal offer_data={offer_data} loading_offer={loading_offer} user_data={user_data} />
+      <Modal 
+        showModal={showModal} 
+        setShowModal={setShowModal}
+        offer_data={offer_data} 
+        loading_offer={loading_offer} 
+        user_data={user_data} 
+      />
     </>
   );
 };

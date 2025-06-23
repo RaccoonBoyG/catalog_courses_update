@@ -4,7 +4,6 @@ import { loadMoreCards } from "../store/cards/cardsSlice";
 
 const ButtonLoadMore = () => {
   const dispatch = useDispatch();
-  const buttonState = useSelector(state => state.cards.isHideButton);
 
   const handleLoadMore = () => {
     dispatch(loadMoreCards());

@@ -14,10 +14,9 @@ const Projects = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   
-  const { loading, data, data_program } = useSelector(state => ({
+  const { loading, data } = useSelector(state => ({
     data: state.projects.items,
-    loading: state.projects.loading,
-    data_program: state.programs.items
+    loading: state.projects.loading
   }));
 
   useEffect(() => {
