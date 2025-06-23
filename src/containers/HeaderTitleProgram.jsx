@@ -29,8 +29,13 @@ const HeaderTitleProgram = (props) => {
       <div className="d-flex flex-row backImgCourse margin-custom-catalog p-5">
         <div className={`container container-course_about d-flex flex-column text-light animated fadeIn faster`}>
           <div className=" d-flex title_catalog align-items-start justify-content-start mb-4" style={{ textAlign: 'left' }}>
-            <h1 className="d-flex align-items-start justify-content-start">{props.title}</h1>
+            <h1 className="d-flex align-items-start justify-content-start">{props.name}</h1>
           </div>
+          {props.data?.start_display && (
+            <div className="course-meta text-light mb-3">
+              <p className="h5">{props.data.start_display}</p>
+            </div>
+          )}
           {
             <ButtonsProgramsEnroll
               isAuth={props.isAuth}
@@ -218,8 +223,7 @@ const button_enroll_program = (props) => (
       href={`${MEDIA_LS_URL}/api/itoo_api/verified_profile/profile/${props.program_slug}/`}
       style={{ borderRadius: 0 }}
     >
-      Записаться на
-      <br /> программу
+      Записаться на программу
     </a>
   </div>
 );

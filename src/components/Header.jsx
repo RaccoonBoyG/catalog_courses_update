@@ -105,19 +105,18 @@ const Header = () => {
           <div className="justify-content-md-center" id="navbarSupportedContent">
             <ul className="navbar-nav navigate">
               <li className="nav-item">
-                {/* <NavLink to="/help" className="nav-link">
-                  Задать вопрос
-                </NavLink> */}
+                {/* Navigation items can go here */}
               </li>
               {isAuth && <MyCourses />}
             </ul>
           </div>
           
-          <NavLink to="/help" className="u-button u-button-outline login-button">
-            <h4 className="u-fw-400">Задать вопрос</h4>
-          </NavLink>
-
-          {isAuth ? <RenderProfileYes /> : <RenderProfileNo />}
+          <div className="d-flex align-items-center gap-2">
+            <NavLink to="/help" className="u-button u-button-outline">
+              <h4 className="u-fw-400 mb-0">Задать вопрос</h4>
+            </NavLink>
+            {isAuth ? <RenderProfileYes /> : <RenderProfileNo />}
+          </div>
         </nav>
       </div>
     </React.Fragment>

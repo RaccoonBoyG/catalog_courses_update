@@ -65,6 +65,7 @@ const ProgramAbout = () => {
         search={location.search}
         isAuth={isAuth}
         data_enroll={data_enroll}
+        data={data}
       />
       <div className="container text-custom-dark p-3 mb-3">
         <ObjectContent data_content={data.content} />

@@ -8,7 +8,7 @@ const HeaderTitle = (props) => {
         <div className="course-title-container">
           <h3 className="course-title clr-blue-main">{props.name}</h3>
           <div className="course-meta text-dark">
-            <p>{props.data.start_display}</p>
+            <p>{props.data?.start_display}</p>
           </div>
         </div>
 
