@@ -266,7 +266,7 @@ const withEither = (conditionalRenderingFn, EitherComponent) => (Component) => (
   );
 };
 
-const isViewConditionFn = (props) => !props.data_enroll.is_active;
+const isViewConditionFn = (props) => !props.data_enroll?.is_active;
 const isViewAuthConditionFn = (props) => (props.enrollment_allowed === '0' ? false : true);
 
 const withEditContionalRendering = withEither(isViewConditionFn, ButtonProgram);

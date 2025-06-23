@@ -4,13 +4,13 @@ import { BigPlayButton, ControlBar, Player, PlayToggle } from 'video-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { MEDIA_LS_URL } from '../services/openurfu';
-import { fetchAbout } from '../store/course_about/action';
-import { clearLoadingUser, fetchEnrollState, fetchUserState } from '../store/user/action';
+import { fetchAbout } from '../store/course_about/courseAboutSlice';
+import { fetchEnrollState, fetchUserState } from '../store/user/userSlice';
 import AboutRender from '../containers/AboutRender';
 import ButtonScrollToTop from '../containers/ButtonScrollToTop';
 import Spinner from '../containers/Spinner';
 import 'animate.css/animate.min.css';
-import './scroll';
+import scroll from './scroll';
 
 const CourseAbout = () => {
   const dispatch = useDispatch();
@@ -32,10 +32,12 @@ const CourseAbout = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        await dispatch(fetchAbout(id, navigate));
+        await dispatch(fetchAbout({ id, navigate }));
         window.scrollTo(0, 0);
         await dispatch(fetchUserState());
         await dispatch(fetchEnrollState());
+        // Initialize scroll to top functionality
+        scroll();
       } catch (error) {
         console.error('Error loading course data:', error);
       }
