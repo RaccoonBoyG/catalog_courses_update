@@ -49,7 +49,7 @@ const ButtonEnroll = ({ value }) => {
 
   const buttonEnroll = (
     <button className="uhov u-button bg-pink" onClick={changeEnroll}>
-      Записаться на курс
+      <h4 className="u-fw-400">Записаться на курс</h4>
     </button>
   );
 
@@ -59,7 +59,9 @@ const ButtonEnroll = ({ value }) => {
       id="href"
       style={{ borderRadius: 0, textDecoration: 'none' }}
     >
-      <button className="uhov u-button bg-pink">Записаться на курс</button>
+      <button className="uhov u-button bg-pink">
+        <h4 className="u-fw-400">Записаться на курс</h4>
+      </button>
     </a>
   );
 
