@@ -4,7 +4,7 @@ import 'animate.css/animate.min.css';
 import { MEDIA_LS_URL } from '../services/openurfu';
 
 const ButtonEnroll = ({ value }) => {
-  const isAuth = useSelector(state => state.user.isAuth);
+  const isAuth = useSelector((state) => state.user.isAuth);
 
   const getCookie = useCallback((name) => {
     if (document.cookie && document.cookie !== '') {
@@ -27,15 +27,15 @@ const ButtonEnroll = ({ value }) => {
           'Content-Type': 'application/json',
           Accept: 'text-plain, */*',
           'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRFToken': token
+          'X-CSRFToken': token,
         },
         method: 'post',
         credentials: 'same-origin',
         body: JSON.stringify({
-          course_details: { course_id: value }
-        })
+          course_details: { course_id: value },
+        }),
       });
-      
+
       const response = await postEnroll.text();
       if (postEnroll.status === 200) {
         window.location.reload();
@@ -48,27 +48,18 @@ const ButtonEnroll = ({ value }) => {
   }, [getCookie, value]);
 
   const buttonEnroll = (
-    <button 
-      style={{ borderRadius: 0 }} 
-      className="btn btn-light btn-lg mt-2 d-flex shadow" 
-      onClick={changeEnroll}
-    >
+    <button className="uhov u-button bg-pink" onClick={changeEnroll}>
       Записаться на курс
     </button>
   );
 
   const buttonAuth = (
-    <a 
-      href={`${MEDIA_LS_URL}/login`} 
-      id="href" 
+    <a
+      href={`${MEDIA_LS_URL}/login`}
+      id="href"
       style={{ borderRadius: 0, textDecoration: 'none' }}
     >
-      <button 
-        style={{ borderRadius: 0 }} 
-        className="btn btn-light btn-lg mt-2 d-flex shadow"
-      >
-        Записаться на курс
-      </button>
+      <button className="uhov u-button bg-pink">Записаться на курс</button>
     </a>
   );
 

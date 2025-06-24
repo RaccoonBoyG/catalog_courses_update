@@ -10,7 +10,7 @@ const withEither = (conditionalRenderingFn, EitherComponent) => (Component) => (
     <Component {...props} />
   );
 
-const isViewConditionFn = (props) => props.modes_data === undefined;
+const isViewConditionFn = (props) => !!props.modes_data;
 
 const withEditConditionalRendering = withEither(isViewConditionFn, HeaderTitleProgram);
 const AboutRender = withEditConditionalRendering(HeaderTitle);

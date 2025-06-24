@@ -26,7 +26,7 @@ const CourseAbout = () => {
       loading_user: state.user.loading,
       modes_data: state.user.course_user_modes,
     }));
-
+  console.log(modes_data);
   const [isEnrolling, setIsEnrolling] = useState(false);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { MEDIA_LS_URL } from '../services/openurfu';
+import ButtonEnroll from './ButtonEnroll';
 
 const HeaderTitle = (props) => {
   return (
@@ -28,33 +29,33 @@ const HeaderDescription = ({ desc }) => (
   </div>
 );
 
-const ButtonEnroll = ({ isAuth, changeEnroll, invitation_only, isEnrolling }) => {
-  if (!isAuth) {
-    return (
-      <a href={`${MEDIA_LS_URL}/login`} className="uhov u-button bg-pink">
-        <h4 className="u-fw-400">Записаться на курс</h4>
-      </a>
-    );
-  }
+// const ButtonEnroll = ({ isAuth, changeEnroll, invitation_only, isEnrolling }) => {
+//   if (!isAuth) {
+//     return (
+//       <a href={`${MEDIA_LS_URL}/login`} className="uhov u-button bg-pink">
+//         <h4 className="u-fw-400">Записаться на курс</h4>
+//       </a>
+//     );
+//   }
 
-  if (invitation_only) {
-    return (
-      <button className="u-button bg-pink" disabled>
-        Запись только по приглашению
-      </button>
-    );
-  }
+//   if (invitation_only) {
+//     return (
+//       <button className="u-button bg-pink" disabled>
+//         Запись только по приглашению
+//       </button>
+//     );
+//   }
 
-  return (
-    <button
-      className="uhov u-button bg-pink"
-      onClick={changeEnroll}
-      disabled={isEnrolling}
-    >
-      {isEnrolling ? 'Записываем...' : 'Записаться на курс'}
-    </button>
-  );
-};
+//   return (
+//     <button
+//       className="uhov u-button bg-pink"
+//       onClick={changeEnroll}
+//       disabled={isEnrolling}
+//     >
+//       {isEnrolling ? 'Записываем...' : 'Записаться на курс'}
+//     </button>
+//   );
+// };
 
 const ButtonReadMore = ({ id }) => (
   <a href={`${MEDIA_LS_URL}/courses/${id}/info`} className="uhov u-button bg-pink">
