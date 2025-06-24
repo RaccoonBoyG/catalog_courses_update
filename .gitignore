@@ -28,3 +28,4 @@ yarn-error.log*
 /src/static/images
 bun.lock
 package-lock.json
+bun.lock
