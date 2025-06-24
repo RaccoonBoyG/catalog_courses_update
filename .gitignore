@@ -26,3 +26,5 @@ yarn-error.log*
 # static 
 /src/static/fonts
 /src/static/images
+bun.lock
+package-lock.json
