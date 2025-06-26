@@ -68,7 +68,7 @@ const ButtonReadMore = ({ courseId }) => (
  * ButtonInvitationOnly shows disabled button when enrollment is by invitation.
  */
 const ButtonInvitationOnly = () => (
-  <button className="uhov u-button bg-pink" disabled>
+  <button className="u-button bg-pink" disabled>
     <h4 className="u-fw-400">Запись только по приглашению</h4>
   </button>
 );
