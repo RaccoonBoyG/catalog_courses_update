@@ -44,11 +44,7 @@ const Footer = () => {
               </NavLink>
             </p>
             <p>
-              <a
-                href={`${MEDIA_LS_URL}/helpdesk`}
-                className="text-neutral-regular"
-                id="href"
-              >
+              <a href={`${MEDIA_LS_URL}/help`} className="text-neutral-regular" id="href">
                 Техническая поддержка
               </a>
             </p>
