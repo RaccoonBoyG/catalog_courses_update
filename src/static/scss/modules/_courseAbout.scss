@@ -295,3 +295,10 @@
     background-color: #cf4560 !important;
   }
 }
+.u-bc-sec-first-link {
+  font-size: 18px !important;
+}
+.u-bc-sec-first-link::before {
+  transform: scale(1.5);
+  transform-origin: left center;
+}

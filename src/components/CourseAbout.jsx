@@ -17,15 +17,16 @@ const CourseAbout = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { data, isAuth, course_enroll_user, loading, loading_user, modes_data } =
-    useSelector((state) => ({
+  const { data, isAuth, course_enroll_user, loading, modes_data } = useSelector(
+    (state) => ({
       data: state.course_about.items,
       isAuth: state.user.isAuth,
       course_enroll_user: state.user.course_enroll_user,
       loading: state.course_about.loading,
       loading_user: state.user.loading,
       modes_data: state.user.course_user_modes,
-    }));
+    })
+  );
   console.log(modes_data);
   const [isEnrolling, setIsEnrolling] = useState(false);
 
@@ -77,13 +78,18 @@ const CourseAbout = () => {
     }
   };
 
-  if (loading && loading_user && data.length === 0) {
+  if (loading) {
     return <Spinner />;
   }
 
   return (
     <>
       <div className="container umt64">
+        <div className="u-bc-sec umy24">
+          <a className="u-bc-sec-first-link" href="/">
+            Назад к каталогу
+          </a>
+        </div>
         <div className="course-top-container">
           <div className="promo-container">
             <PromoPlayer

@@ -17,6 +17,7 @@ import CourseAbout from './CourseAbout';
 import Organization from './Organization';
 import { useDispatch } from 'react-redux';
 import { fetchUserState } from '../store/user/userSlice';
+import Help from './Help';
 
 const RouterApp = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const RouterApp = () => {
             {/* <Route path="/about" element={<AboutUs />} /> */}
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/tech" element={<Tech />} />
+            <Route path="/help" element={<Help />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="/orgs/:org" element={<OrganizationAbout />} />
             <Route path="/orgs" element={<Organization />} />
