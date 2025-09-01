@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
-const OPENEDU_ENDPOINT = `https://courses.openedu.urfu.ru/api`;
-const OPENEDU_ENDPOINT2 = `https://courses.openedu.urfu.ru/api`;
+const OPENEDU_ENDPOINT = `https://old.courses.openedu.urfu.ru/api`;
+const OPENEDU_ENDPOINT2 = `https://old.courses.openedu.urfu.ru/api`;
 const COURSES_ENDPOINT = `/courses/v1/courses/`;
 const DEFAULT_QUERY = 1;
 const PAGE_PARAM = `?page=`;
 const PAGE_SIZE = `?page_size=300`;
-export const MEDIA_LS_URL = `https://courses.openedu.urfu.ru`;
+export const MEDIA_LS_URL = `https://old.courses.openedu.urfu.ru`;
 
 // const OPENEDU_ENDPOINT = `https://courses.edubricks.ru/api`;
 // const OPENEDU_ENDPOINT2 = `https://courses.edubricks.ru/api`;
@@ -37,14 +37,14 @@ class OpeneduService {
   async getCardAPI() {
     let data = await this.getDataAPI();
     let arr = [];
-    data.results.map(item => {
+    data.results.map((item) => {
       return arr.push({
         name: item.name,
         start_display: item.start_display,
         number: item.number,
         short_description: item.short_description,
         id: item.id,
-        image: item.media.image.small
+        image: item.media.image.small,
       });
     });
     return arr;
@@ -76,14 +76,14 @@ class OpeneduService {
     let arr = [];
 
     if (page <= pagination.num_pages) {
-      data.results.map(item => {
+      data.results.map((item) => {
         return arr.push({
           name: item.name,
           start_display: item.start_display,
           number: item.number,
           short_description: item.short_description,
           id: item.id,
-          image: item.media.image.small
+          image: item.media.image.small,
         });
       });
     }
@@ -91,18 +91,18 @@ class OpeneduService {
   }
 
   async getAllCardApi() {
-    // https://courses.openedu.urfu.ru/api/courses/v1/courses/?page_size=100
+    // https://old.courses.openedu.urfu.ru/api/courses/v1/courses/?page_size=100
     let url = `${OPENEDU_ENDPOINT}/courses/v1/courses/${PAGE_SIZE}`;
     let data = await this.getDataAPI(url);
     let arr = [];
-    data.results.map(item => {
+    data.results.map((item) => {
       return arr.push({
         name: item.name,
         start_display: item.start_display,
         number: item.number,
         short_description: item.short_description,
         id: item.id,
-        image: item.media.image.small
+        image: item.media.image.small,
       });
     });
     return arr;
@@ -121,7 +121,7 @@ class OpeneduService {
       overview: data.overview,
       invitation_only: data.invitation_only,
       course_video_uri: data.media.course_video.uri,
-      course_image_uri: data.media.course_image.uri
+      course_image_uri: data.media.course_image.uri,
     };
   }
 
@@ -137,7 +137,7 @@ class OpeneduService {
       description: data.description,
       logo: data.logo,
       image_background: data.image_background,
-      active: data.active
+      active: data.active,
     };
   }
 
@@ -148,7 +148,7 @@ class OpeneduService {
     return {
       courses: data.courses,
       org_slug: data.slug,
-      active: data.active
+      active: data.active,
     };
   }
 
@@ -156,7 +156,7 @@ class OpeneduService {
     let url = `${OPENEDU_ENDPOINT}/itoo_api/v0/organizations/`;
     let arr = [];
     let data = await this.getDataAPI(url);
-    data.results.map(item => {
+    data.results.map((item) => {
       return arr.push({
         id: item.id,
         name: item.title,
@@ -165,7 +165,7 @@ class OpeneduService {
         description: item.description,
         image_background: item.image_background,
         logo: item.logo,
-        active: item.active
+        active: item.active,
       });
     });
     return arr;
@@ -178,7 +178,7 @@ class OpeneduService {
     return {
       courses: data.courses,
       org_slug: data.slug,
-      active: data.active
+      active: data.active,
     };
   }
 
@@ -198,7 +198,7 @@ class OpeneduService {
       content: data.content,
       edu_start_date: data.edu_start_date,
       edu_end_date: data.edu_end_date,
-      enrollment_allowed: data.enrollment_allowed
+      enrollment_allowed: data.enrollment_allowed,
     };
   }
 
@@ -217,7 +217,7 @@ class OpeneduService {
       active: data.active,
       content: data.content,
       program: data.program,
-      hide_menu: data.hide_menu
+      hide_menu: data.hide_menu,
     };
   }
 
@@ -225,7 +225,7 @@ class OpeneduService {
     let url = `${OPENEDU_ENDPOINT}/itoo_api/v0/programs/?page_size=300`;
     let arr = [];
     let data = await this.getDataAPI(url);
-    data.results.map(item => {
+    data.results.map((item) => {
       return arr.push({
         id: item.id,
         name: item.title,
@@ -238,7 +238,7 @@ class OpeneduService {
         logo: item.logo,
         active: item.active,
         edu_start_date: item.edu_start_date,
-        edu_end_date: item.edu_end_date
+        edu_end_date: item.edu_end_date,
       });
     });
     return arr;
@@ -248,7 +248,7 @@ class OpeneduService {
     let url = `${OPENEDU_ENDPOINT}/itoo_api/v0/projects/?page_size=300`;
     let arr = [];
     let data = await this.getDataAPI(url);
-    data.results.map(item => {
+    data.results.map((item) => {
       return arr.push({
         id: item.id,
         name: item.title,
@@ -267,16 +267,19 @@ class OpeneduService {
 
   async checkSession() {
     let token = Cookies.get('csrftoken');
-    let postEnroll = await fetch(`${OPENEDU_ENDPOINT2}/itoo_api/acquiring/check_session/`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'text-plain, */*',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRFToken': token
-      },
-      method: 'post',
-      credentials: 'same-origin'
-    });
+    let postEnroll = await fetch(
+      `${OPENEDU_ENDPOINT2}/itoo_api/acquiring/check_session/`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'text-plain, */*',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': token,
+        },
+        method: 'post',
+        credentials: 'same-origin',
+      }
+    );
     const response = await postEnroll.json();
     return response.detail;
   }
@@ -285,12 +288,12 @@ class OpeneduService {
     let url = `${OPENEDU_ENDPOINT2}/user/v1/accounts`;
     let arr = [];
     let data = await this.getDataAPI(url);
-    data.map(item => {
+    data.map((item) => {
       return arr.push({
         username: item.username,
         is_active: item.is_active,
         profile_image: item.profile_image.image_url_full,
-        email: item.email
+        email: item.email,
       });
     });
     return arr;
@@ -312,13 +315,13 @@ class OpeneduService {
     }
     if (data.detail === 'failed') {
       arr = {
-        is_active: false
+        is_active: false,
       };
     } else {
       arr = {
         is_active: true,
         username: data.username,
-        program_slug: data.program_slug
+        program_slug: data.program_slug,
       };
     }
     return arr;
@@ -341,19 +344,24 @@ class OpeneduService {
     }
     if (Object.keys(data).length === 0) {
       arr.push({
-        is_active: false
+        is_active: false,
       });
     } else if (Object.keys(data).length > 0) {
-      slug = data.course_details.course_modes.filter(i => i.slug === 'verified').length > 0 ? 'verified' : data.course_details.course_modes[0].slug;
+      slug =
+        data.course_details.course_modes.filter((i) => i.slug === 'verified').length > 0
+          ? 'verified'
+          : data.course_details.course_modes[0].slug;
       arr.push({
         username: data.user,
         user_mode: data.mode,
         is_active: data.is_active,
         course_id: data.course_details.course_id,
         course_modes_slug: slug,
-        course_modes_currency: data.course_details.course_modes.find(i => i.currency).currency,
+        course_modes_currency: data.course_details.course_modes.find((i) => i.currency)
+          .currency,
         course_modes_min_price: data.course_details.course_modes[0].min_price,
-        course_modes_suggested_prices: data.course_details.course_modes[0].suggested_prices
+        course_modes_suggested_prices:
+          data.course_details.course_modes[0].suggested_prices,
       });
     }
     return arr;
@@ -380,7 +388,7 @@ class OpeneduService {
   async CheckEnrollCourseItooAPI(id) {
     let url = `${OPENEDU_ENDPOINT}/itoo_api/v0/enrollment/${id}/`;
     let data = await this.getDataAPI(url);
-    return data.map(item => (item.course_details.course_id === id ? true : false));
+    return data.map((item) => (item.course_details.course_id === id ? true : false));
   }
 
   async ResponseStatusAPI() {
@@ -401,7 +409,7 @@ class OpeneduService {
       program_title: data.program_title,
       program_slug: data.program_slug,
       status: data.status,
-      edu_program_cost: data.edu_program_cost
+      edu_program_cost: data.edu_program_cost,
     };
   }
 }

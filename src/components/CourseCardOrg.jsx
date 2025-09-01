@@ -12,7 +12,7 @@ const backgroundImg = {
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPositionY: 'top',
-  minHeight: '200px'
+  minHeight: '200px',
 };
 
 const CourseCardOrg = ({ item }) => {
@@ -42,13 +42,21 @@ const CourseCardOrg = ({ item }) => {
       data-placement="left"
       title={display_name}
     >
-      <div className="bg-light p-3 shadow-effect animated fadeIn faster shadow" style={{ minHeight: '400px', borderRadius: '0' }}>
-        <Link to={{ pathname: `/${id}` }} onClick={postIdAPI} className="text-white" style={{ textDecoration: 'none' }}>
+      <div
+        className="bg-light p-3 shadow-effect animated fadeIn faster shadow"
+        style={{ minHeight: '400px', borderRadius: '0' }}
+      >
+        <Link
+          to={{ pathname: `/${id}` }}
+          onClick={postIdAPI}
+          className="text-white"
+          style={{ textDecoration: 'none' }}
+        >
           <div
             className="d-flex flex-row"
             style={{
               ...backgroundImg,
-              backgroundImage: `url(https://courses.openedu.urfu.ru/${course_image_url})`
+              backgroundImage: `url(https://old.courses.openedu.urfu.ru/${course_image_url})`,
             }}
           ></div>
           <div className="d-flex-row container-fluid p-0">
@@ -58,12 +66,17 @@ const CourseCardOrg = ({ item }) => {
                   <FontAwesomeIcon icon={faGraduationCap} size="1x" /> УрФУ
                 </small>
               </p>
-              <p className="card-catalog-title p-1 mb-0 card-title">{truncate(display_name, 6)}</p>
+              <p className="card-catalog-title p-1 mb-0 card-title">
+                {truncate(display_name, 6)}
+              </p>
               <p className="card-catalog-text p-1 m-0 card-text">
                 <FontAwesomeIcon icon={faClock} size="1x" /> Начало: {start_display}
               </p>
             </div>
-            <div className="flex-row d-flex flex-column pl-3 " style={{ position: 'absolute', bottom: '0px' }}>
+            <div
+              className="flex-row d-flex flex-column pl-3 "
+              style={{ position: 'absolute', bottom: '0px' }}
+            >
               <p className="nav-link text-primary p-1 show-about">Подробнее</p>
             </div>
           </div>
